@@ -1,12 +1,12 @@
 active_flow: planning
 active_epic: e81
-active_story: e81s01
+active_story: e81s02
 bug_id: null
 bigpowers_version: 2.87.0
 bug_cycle: null
 handoff:
   next_skill: develop-tdd
-  context: 'Implement configurable project runtime in three slices: resolver, artifact root, then Jujutsu lifecycle support.'
+  context: 'Runtime resolver is green (11 tests). Next: migrate project-facing artifact paths.'
   epic: e81
 epic_cycle: null
 metrics:
@@ -28,5 +28,5 @@ release:
   last_epic: e80-verify-arc-hardening
 vcs:
   kind: jj
-  change_id: nlxqpyqx
+  change_id: tklkypxk
   parent_bookmark: main

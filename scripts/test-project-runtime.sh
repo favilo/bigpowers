@@ -3,7 +3,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-# shellcheck source=lib/project-runtime.sh
+# The test resolves the library from this repository at runtime.
+# shellcheck disable=SC1091
 source "$ROOT/scripts/lib/project-runtime.sh"
 
 PASS=0
@@ -34,7 +35,7 @@ assert_fails_with() {
   local name="$1" expected="$2"
   shift 2
   local output
-  if output="$($@ 2>&1)"; then
+  if output="$("$@" 2>&1)"; then
     fail "$name — command unexpectedly succeeded"
   elif [[ "$output" == *"$expected"* ]]; then
     pass "$name"

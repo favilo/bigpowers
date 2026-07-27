@@ -1,14 +1,14 @@
 story_id: e81s01
 title: Project runtime configuration resolver
 spec: e81s01-runtime-config.md
-status: failing
+status: passing
 bcps: 3
 tasks:
   - id: 1
     description: Add failing resolver contract tests
     verify: bash scripts/test-project-runtime.sh
     risk: P1
-    status: failing
+    status: passing
     allure:
       severity: high
       categories:
@@ -18,7 +18,7 @@ tasks:
     description: Implement configuration precedence, validation, and path helpers
     verify: bash scripts/test-project-runtime.sh
     risk: P1
-    status: failing
+    status: passing
     allure:
       severity: high
       categories:

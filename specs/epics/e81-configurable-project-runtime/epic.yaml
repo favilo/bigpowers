@@ -13,7 +13,7 @@ source: "Personal fork requirement: private .specs cockpit and native Jujutsu su
 stories:
   - id: e81s01
     title: Project runtime configuration resolver
-    status: planned
+    status: done
     bcps: 3
     risk: P1
     files:
