@@ -1,15 +1,16 @@
-# story: e80s01
-# story: e80s03
-# story: e51s04
-# story: e45s06
-# story: e45s08
-# story: e45s34
 ---
 name: develop-tdd
 model: sonnet
 effort: standard
 description: Test-driven development with red-green-refactor loop using vertical slices. Use for features (epic tasks) or bugs (specs/bugs/BUG-*.md).
 ---
+
+# story: e80s01
+# story: e80s03
+# story: e51s04
+# story: e45s06
+# story: e45s08
+# story: e45s34
 
 # Develop TDD
 

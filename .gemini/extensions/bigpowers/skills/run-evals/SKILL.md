@@ -5,6 +5,8 @@ description: "Eval-Driven Development — define capability and regression evals
 disable-model-invocation: true
 ---
 
+# story: e45s37
+
 # Run Evals
 
 > **HARD GATE** — Define evals before implementation. Code graders = runnable `verify:` commands; model graders = explicit rubric with pass/fail criteria.

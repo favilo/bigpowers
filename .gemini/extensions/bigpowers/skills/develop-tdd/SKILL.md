@@ -5,6 +5,13 @@ description: "Test-driven development with red-green-refactor loop using vertica
 disable-model-invocation: true
 ---
 
+# story: e80s01
+# story: e80s03
+# story: e51s04
+# story: e45s06
+# story: e45s08
+# story: e45s34
+
 # Develop TDD
 
 > **HARD GATE** — Do NOT proceed if on `main` or `master`. Run `kickoff-branch` first to create a feature branch or worktree.

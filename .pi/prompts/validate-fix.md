@@ -3,6 +3,10 @@ name: validate-fix
 description: "Prove a fix works before declaring done — re-run the failing test, run the full suite, typecheck, lint, and harden against recurrence. Use after implementing a bug fix, when user says \"is this fixed?\", or before closing an investigation."
 ---
 
+# story: e80s01
+# story: e80s04
+# story: e45s08
+
 # Validate Fix
 > **HARD GATE** — Fix must not regress. Run full test suite and manual UAT before declaring success.
 

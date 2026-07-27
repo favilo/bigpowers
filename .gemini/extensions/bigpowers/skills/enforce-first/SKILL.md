@@ -5,6 +5,8 @@ description: "Apply the F.I.R.S.T test quality rubric (per CONVENTIONS.md §Test
 disable-model-invocation: true
 ---
 
+# story: e80s01
+
 # Enforce FIRST
 > **HARD GATE** — **HARD GATE** — Before shipping, ALL enforcement checks must pass: lint, typecheck, tests, coverage gates. Do NOT disable or skip checks to get to green.
 

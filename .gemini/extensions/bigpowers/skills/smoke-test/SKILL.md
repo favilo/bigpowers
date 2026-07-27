@@ -5,6 +5,8 @@ description: "Post-deploy health-check against a live URL. Validates HTTP status
 disable-model-invocation: true
 ---
 
+# story: e80s02
+
 # Smoke Test
 
 > **HARD GATE** — Do NOT run smoke-test against a URL that hasn't been deployed yet. Always run `deploy` first, then `smoke-test`.

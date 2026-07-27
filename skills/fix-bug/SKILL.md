@@ -1,10 +1,11 @@
-# story: e51s04
 ---
 name: fix-bug
 model: sonnet
 effort: standard
 description: Bug fix orchestrator — active_flow fix_bug; reads specs/bugs/BUG-*.md; chains investigate-bug, develop-tdd, validate-fix. Use when user reports a defect.
 ---
+
+# story: e51s04
 
 # Fix Bug
 

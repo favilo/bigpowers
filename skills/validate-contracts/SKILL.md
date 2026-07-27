@@ -1,4 +1,3 @@
-# story: e80s02
 ---
 name: validate-contracts
 phase: verify
@@ -6,6 +5,8 @@ description: "Assert data shape consistency across system boundaries — live AP
 model: sonnet
 effort: standard
 ---
+
+# story: e80s02
 
 # Validate Contracts
 

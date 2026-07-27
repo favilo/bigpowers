@@ -4,6 +4,8 @@ model: sonnet
 description: "Build → verify artifact → deploy → wait → smoke deployment pipeline. Platform-agnostic (MCP or CLI), with configurable timeout, retry with exponential backoff, and integrated health-check. The deploy half of CI/CD: run after build to push to production."
 ---
 
+<!-- story: e45s15 -->
+
 # Deploy
 
 > **HARD GATE** — Do not deploy without running tests first. Run `test` or your CI suite before this skill.

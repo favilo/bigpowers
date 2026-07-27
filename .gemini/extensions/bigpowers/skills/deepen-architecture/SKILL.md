@@ -5,6 +5,9 @@ description: "Find deepening opportunities in a codebase, informed by the domain
 disable-model-invocation: true
 ---
 
+# story: e45s31
+<!-- story: e45s14 -->
+
 # Deepen Architecture
 
 Surface architectural friction and propose **deepening opportunities** — refactors that turn shallow modules into deep ones. The aim is testability and AI-navigability.
