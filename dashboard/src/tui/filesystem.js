@@ -1,15 +1,17 @@
 const fs = require('fs');
 const path = require('path');
+const { specsDir, specsPath } = require('../../../scripts/lib/project-runtime');
 
 function renderFilesystem(box, projectRoot) {
   if (!box || typeof box.setContent !== 'function') {
     return;
   }
 
-  const specsPath = path.join(projectRoot, 'specs');
+  const artifactDir = specsDir(projectRoot);
+  const artifactPath = specsPath(projectRoot);
 
-  if (!fs.existsSync(specsPath)) {
-    box.setContent('{center}{gray-fg}specs/ not found{/gray-fg}{/center}');
+  if (!fs.existsSync(artifactPath)) {
+    box.setContent(`{center}{gray-fg}${artifactDir}/ not found{/gray-fg}{/center}`);
     return;
   }
 
@@ -18,7 +20,7 @@ function renderFilesystem(box, projectRoot) {
   let fileCount = 0;
 
   try {
-    const entries = fs.readdirSync(specsPath, { withFileTypes: true });
+    const entries = fs.readdirSync(artifactPath, { withFileTypes: true });
 
     // Count files for badge
     function countFiles(dir, depth = 0) {
@@ -38,7 +40,7 @@ function renderFilesystem(box, projectRoot) {
       return count;
     }
 
-    fileCount = countFiles(specsPath);
+    fileCount = countFiles(artifactPath);
     lines.push(`{gray-fg}[${fileCount} files]{/gray-fg}`);
     lines.push('');
 
@@ -81,9 +83,9 @@ function renderFilesystem(box, projectRoot) {
       }
     }
 
-    buildTree(specsPath);
+    buildTree(artifactPath);
   } catch (err) {
-    lines.push('{gray-fg}Error reading specs/{/gray-fg}');
+    lines.push(`{gray-fg}Error reading ${artifactDir}/{/gray-fg}`);
   }
 
   box.setContent(lines.join('\n'));
