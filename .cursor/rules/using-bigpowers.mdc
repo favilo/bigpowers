@@ -23,7 +23,21 @@ From source: `git clone` → `bash scripts/install.sh`. Package: [bigpowers on n
 
 ## What bigpowers is
 
-A curated set of skills organized around the PMBOK developer lifecycle. Each skill does one thing. Skills reference each other by name only — low coupling, high cohesion. All written output goes to `specs/` at your project root.
+A curated set of skills organized around the PMBOK developer lifecycle. Each skill does one thing. Skills reference each other by name only — low coupling, high cohesion. All written output goes to the configured artifact root at your project root.
+
+## Project runtime configuration
+
+The default artifact root is `specs/`. To keep personal planning state elsewhere, create
+`.bigpowers/config.yaml`:
+
+```yaml
+specs_dir: .specs
+```
+
+`BIGPOWERS_SPECS_DIR` overrides the file setting. Every `specs/...` path written in a
+bigpowers skill is a logical path under the configured artifact root. For example, with
+the configuration above, `specs/state.yaml` means `.specs/state.yaml`. Resolve this
+substitution before reading, writing, or running a verification command.
 
 ## The lifecycle at a glance
 
@@ -95,7 +109,7 @@ Start the HTTP dashboard with `visual-dashboard` → `GET /api/status?projectDir
 
 ## Key conventions
 
-- **specs/ is your memory.** All domain docs, plans, and investigation outputs go in `specs/` at your project root.
+- **The configured artifact root is your memory.** It defaults to `specs/`; all domain docs, plans, and investigation outputs go there.
 - **Integrate:** team default is `gh pr` (team-pr); solo profile uses `land-branch.sh`. Never create GitHub issues from skills — use local Markdown files instead.
 - **One skill, one thing.** If you're unsure which skill to call, call `survey-context` — it reads your current state and recommends the next step.
 - **verify: every step.** Every epic task must have `verify: <runnable command>`. Evidence over claims.
@@ -107,4 +121,4 @@ Call `survey-context` to read your project's current state and get a personalize
 
 
 
-<!-- story: e03s02 -->
+<!-- story: e03s02 e81s02 -->
