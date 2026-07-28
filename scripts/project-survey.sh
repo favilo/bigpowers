@@ -17,11 +17,16 @@ has_specs=$([[ -d "$SPECS_DIR" ]] && echo "true" || echo "false")
 # 2. Scan the configured artifact root (YAML-first)
 specs_files=""
 if [[ "$has_specs" == "true" ]]; then
-  specs_files=$( {
-    ls "$SPECS_DIR"/*.yaml 2>/dev/null || true
-    ls "$SPECS_DIR"/product/*.yaml 2>/dev/null || true
-    ls "$SPECS_DIR"/*.md 2>/dev/null || true
-  } | xargs -n1 basename 2>/dev/null | sort -u | tr '\n' ',' | sed 's/,$//')
+  shopt -s nullglob
+  spec_paths=(
+    "$SPECS_DIR"/*.yaml
+    "$SPECS_DIR"/product/*.yaml
+    "$SPECS_DIR"/*.md
+  )
+  shopt -u nullglob
+  specs_files=$(for spec_path in "${spec_paths[@]}"; do
+    basename "$spec_path"
+  done | sort -u | tr '\n' ',' | sed 's/,$//')
 fi
 
 # 3. Git state (replaced by the VCS adapter in the Jujutsu slice)
