@@ -88,6 +88,11 @@ else
   fail "validator reads configured root — failure did not reference configured state"
 fi
 
+MIGRATION_PROJECT="$(make_configured_project migration)"
+MIGRATION_OUTPUT="$(bash "$ROOT/scripts/migrate-version.sh" --dry-run --force --project "$MIGRATION_PROJECT" 2>&1)" || true
+assert_contains "migration resolves configured root" \
+  "$MIGRATION_PROJECT/.specs/migrations/registry.okf.md" "$MIGRATION_OUTPUT"
+
 if grep -q "configured artifact root" "$ROOT/skills/using-bigpowers/SKILL.md"; then
   pass "canonical onboarding skill defines artifact-root substitution"
 else
