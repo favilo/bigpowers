@@ -88,6 +88,18 @@ else
   fail "validator reads configured root — failure did not reference configured state"
 fi
 
+if grep -q "configured artifact root" "$ROOT/skills/using-bigpowers/SKILL.md"; then
+  pass "canonical onboarding skill defines artifact-root substitution"
+else
+  fail "canonical onboarding skill defines artifact-root substitution"
+fi
+
+if grep -q "configured artifact root" "$ROOT/.pi/skills/using-bigpowers/SKILL.md"; then
+  pass "generated Pi onboarding skill defines artifact-root substitution"
+else
+  fail "generated Pi onboarding skill defines artifact-root substitution"
+fi
+
 echo "---"
 echo "test-configurable-specs-root: $PASS passed, $FAIL failed"
 [[ "$FAIL" -eq 0 ]]
