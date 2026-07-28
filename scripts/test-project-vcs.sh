@@ -4,6 +4,7 @@
 # scenario: SC-e81s03-P0-02
 # scenario: SC-e81s03-P0-03
 # scenario: SC-e81s03-P1-01
+# scenario: SC-e81s03-P1-02
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -76,3 +77,24 @@ elif [[ "$invalid_output" != *"initialize Jujutsu"* ]]; then
 fi
 
 echo "PASS explicit VCS overrides validate the selected repository"
+
+jj_survey="$(cd "$REAL_COLOCATED" && bash "$ROOT/scripts/project-survey.sh")"
+git_survey="$(cd "$GIT_PROJECT" && bash "$ROOT/scripts/project-survey.sh")"
+for expected in "VCS: jj" "Change ID:" "Parent Bookmark:"; do
+  if [[ "$jj_survey" != *"$expected"* ]]; then
+    echo "FAIL Jujutsu survey — expected '$expected'" >&2
+    exit 1
+  fi
+done
+for expected in "VCS: git" "Branch: main" "VCS Status:" "Recent Logs:"; do
+  if [[ "$git_survey" != *"$expected"* ]]; then
+    echo "FAIL Git survey — expected '$expected'" >&2
+    exit 1
+  fi
+done
+if [[ "$jj_survey" == *"detached HEAD"* ]]; then
+  echo "FAIL Jujutsu survey — detached Git state leaked" >&2
+  exit 1
+fi
+
+echo "PASS project survey renders native VCS state"
