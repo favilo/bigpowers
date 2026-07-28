@@ -1,0 +1,11 @@
+{
+  "defect_class": "skill-source-over-line-cap",
+  "grep_pattern": "bash scripts/check-skill-size.sh",
+  "match_count": 0,
+  "sweep_scope": "skills/*/SKILL.md",
+  "patched_in_pr": [
+    "skills/deepen-architecture/SKILL.md",
+    "skills/using-bigpowers/SKILL.md"
+  ],
+  "tracked_issues": []
+}

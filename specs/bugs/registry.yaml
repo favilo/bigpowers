@@ -448,3 +448,13 @@ bugs:
     scope: verification-gates
     title: "Story-level verify: commands in epic.yaml are never executed"
     file: bugs/BUG-2026-07-26-story-verify-never-executed.md
+  - id: BUG-2026-07-28T163129
+    status: fixed
+    severity: medium
+    scope: ci
+    title: "using-bigpowers exceeds utility skill size cap"
+    file: bugs/BUG-2026-07-28T163129-using-bigpowers-size-cap.md
+    files_changed: "skills/using-bigpowers/SKILL.md, skills/deepen-architecture/SKILL.md, scripts/lib/golden-suite-gates.sh"
+    approach: "Remove redundant blank separators and wire project-runtime regression tests into the deterministic gate registry"
+    risk_level: "low"
+    commit_message: "fix(skills): fit using-bigpowers within size cap"

@@ -5,23 +5,27 @@ bug_id: null
 bigpowers_version: 2.87.0
 bug_cycle: null
 handoff:
-  next_skill: develop-tdd
-  context: 'Artifact-root support is green across shell tools, dashboard, MCP, migration, and generated onboarding guidance. Next: native Jujutsu lifecycle state.'
+  next_skill: plan-tests
+  context: Preflight is green after fixing skill-size drift and wiring orphaned e81
+    regression tests. Resume the e81s03 P0 test plan.
   epic: e81
 epic_cycle: null
 metrics:
-  story_start: null
+  story_start: '2026-07-28T16:09:06Z'
   story_end: null
   skill_timings:
     survey-context:
-      calls: 0
-      total_seconds: 0
-      avg_seconds: 0
-      _start: '2026-07-26T19:03:50Z'
+      calls: 1
+      total_seconds: 218.0
+      avg_seconds: 218.0
     verify-work:
       calls: 1
       total_seconds: 1052.0
       avg_seconds: 1052.0
+    develop-tdd:
+      calls: 1
+      total_seconds: 1428.0
+      avg_seconds: 1428.0
 release:
   ci_verified: true
   last_commit: 8efdce74

@@ -8,11 +8,9 @@ disable-model-invocation: true
 # Using bigpowers
 > **HARD GATE** — **HARD GATE** — This skill is the entry point. Do NOT skip it when onboarding new users or starting a new session. It establishes the bigpowers methodology, lifecycle phases, and conventions.
 
-
 Welcome to **bigpowers** — a lifecycle of agent skills for production-ready, TDD-driven software by solo developers. The live catalog and its count are generated in [`SKILL-INDEX.md`](../../SKILL-INDEX.md); never hardcode the number here.
 
 ## Install
-
 ```bash
 npx bigpowers setup           # one-shot setup
 npm install -g bigpowers       # global install
@@ -24,11 +22,9 @@ From source: `git clone` → `bash scripts/install.sh`. Package: [bigpowers on n
 **Reach tools:** **Cline** — native AGENTS.md reader (no extension). **Aider** — opt-in `.aider.conf.yml` with `read: AGENTS.md` ([Aider-AI/aider](https://github.com/Aider-AI/aider)). **Codex CLI** — optional `.codex/config.toml` via seed-conventions; global `~/.codex/AGENTS.md` from install.sh.
 
 ## What bigpowers is
-
 A curated set of skills organized around the PMBOK developer lifecycle. Each skill does one thing. Skills reference each other by name only — low coupling, high cohesion. All written output goes to the configured artifact root at your project root.
 
 ## Project runtime configuration
-
 The default artifact root is `specs/`. To keep personal planning state elsewhere, create
 `.bigpowers/config.yaml`:
 
@@ -120,7 +116,5 @@ Start the HTTP dashboard with `visual-dashboard` → `GET /api/status?projectDir
 ## After this
 
 Call `survey-context` to read your project's current state and get a personalized recommendation for where to go next.
-
-
 
 <!-- story: e03s02 e81s02 -->
