@@ -24,7 +24,7 @@ stories:
       - "story: e81s01"
   - id: e81s02
     title: Configurable artifact root across project-facing surfaces
-    status: planned
+    status: done
     bcps: 4
     risk: P1
     files:
