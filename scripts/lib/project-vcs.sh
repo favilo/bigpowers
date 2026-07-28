@@ -3,6 +3,7 @@
 # scenario: SC-e81s03-P0-01
 # scenario: SC-e81s03-P0-02
 # scenario: SC-e81s03-P0-03
+# scenario: SC-e81s03-P1-01
 # Read-only VCS state adapter for consumer projects.
 
 PROJECT_VCS_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -31,9 +32,29 @@ _bp_git_snapshot() {
     "$branch" "$status" "$recent_logs"
 }
 
+_bp_validate_explicit_vcs() {
+  local project_root="$1" vcs_kind="$2" configured_vcs
+  configured_vcs="$(_bp_vcs_value "$project_root")" || return
+  [[ "$configured_vcs" == auto ]] && return 0
+
+  if ! command -v "$vcs_kind" >/dev/null 2>&1; then
+    echo "bigpowers VCS: selected '$vcs_kind' but its executable is missing; install $vcs_kind or select vcs: auto" >&2
+    return 2
+  fi
+  if [[ "$vcs_kind" == jj ]] && ! jj --no-pager -R "$project_root" root >/dev/null 2>&1; then
+    echo "bigpowers VCS: selected 'jj' for '$project_root', but it is not a Jujutsu repository; initialize Jujutsu or select vcs: auto" >&2
+    return 2
+  fi
+  if [[ "$vcs_kind" == git ]] && ! git -C "$project_root" rev-parse --git-dir >/dev/null 2>&1; then
+    echo "bigpowers VCS: selected 'git' for '$project_root', but it is not a Git repository; initialize Git or select vcs: auto" >&2
+    return 2
+  fi
+}
+
 bp_vcs_snapshot() {
   local project_root="${1:-$PWD}" vcs_kind
   vcs_kind="$(bp_vcs_kind "$project_root")" || return
+  _bp_validate_explicit_vcs "$project_root" "$vcs_kind" || return
   printf 'kind=%s\n' "$vcs_kind"
   case "$vcs_kind" in
     jj) _bp_jj_snapshot_identity "$project_root" ;;
