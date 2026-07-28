@@ -67,6 +67,13 @@ assert_contains "survey discovers configured root" "SPECS=true" "$SURVEY_OUTPUT"
 assert_contains "survey maps configured active flow" "Phase: Plan" "$SURVEY_OUTPUT"
 assert_contains "survey lists configured state" "state.yaml" "$SURVEY_OUTPUT"
 
+EMPTY_SURVEY_PROJECT="$(make_configured_project survey-without-yaml)"
+if EMPTY_SURVEY_OUTPUT="$(cd "$EMPTY_SURVEY_PROJECT" && bash "$ROOT/scripts/project-survey.sh" 2>&1)"; then
+  assert_contains "survey tolerates an artifact root without YAML" "SPECS=true" "$EMPTY_SURVEY_OUTPUT"
+else
+  fail "survey tolerates an artifact root without YAML — script exited non-zero"
+fi
+
 VALIDATOR_PROJECT="$(make_configured_project validator)"
 cat > "$VALIDATOR_PROJECT/.specs/state.yaml" <<'YAML'
 wrong_key: true
