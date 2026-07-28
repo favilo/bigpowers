@@ -2,6 +2,7 @@
 # story: e81s03
 # scenario: SC-e81s03-P0-01
 # scenario: SC-e81s03-P0-02
+# scenario: SC-e81s03-P0-03
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -39,3 +40,22 @@ if [[ "$real_snapshot" != *"parent_bookmark="* || "$real_snapshot" == *"detached
 fi
 
 echo "PASS Jujutsu snapshot reports native identity"
+
+GIT_PROJECT="$TMPDIR_ROOT/git-only"
+git init -q -b main "$GIT_PROJECT"
+git -C "$GIT_PROJECT" config user.name Fixture
+git -C "$GIT_PROJECT" config user.email fixture@example.invalid
+printf 'seed\n' > "$GIT_PROJECT/README.md"
+git -C "$GIT_PROJECT" add README.md
+git -C "$GIT_PROJECT" commit -q -m "seed fixture"
+printf 'dirty\n' >> "$GIT_PROJECT/README.md"
+git_snapshot="$(bp_vcs_snapshot "$GIT_PROJECT")"
+
+for expected in "kind=git" "branch=main" "README.md" "seed fixture"; do
+  if [[ "$git_snapshot" != *"$expected"* ]]; then
+    echo "FAIL Git compatibility — expected snapshot containing '$expected'" >&2
+    exit 1
+  fi
+done
+
+echo "PASS Git snapshot preserves branch, status, and logs"
