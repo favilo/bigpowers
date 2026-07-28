@@ -5,19 +5,23 @@ bug_id: null
 bigpowers_version: 2.87.0
 bug_cycle: null
 handoff:
-  next_skill: plan-tests
-  context: Preflight is green after fixing skill-size drift and wiring orphaned e81
-    regression tests. Resume the e81s03 P0 test plan.
+  next_skill: kickoff-branch
+  context: e81s03 is planned at 5 BCP with all SC-e81s03 P0/P1 scenarios mapped into
+    acceptance criteria and tasks. The capsule consistency gate passes; confirm the
+    active Jujutsu working-copy change is the isolated implementation change before
+    RED.
   epic: e81
-epic_cycle: null
+epic_cycle:
+  story_bcps: 5
+  test_plan: specs/tech-architecture/e81-TEST_PLAN_LATEST.md
 metrics:
   story_start: '2026-07-28T16:09:06Z'
   story_end: null
   skill_timings:
     survey-context:
-      calls: 1
-      total_seconds: 218.0
-      avg_seconds: 218.0
+      calls: 2
+      total_seconds: 259.0
+      avg_seconds: 129.5
     verify-work:
       calls: 1
       total_seconds: 1052.0
@@ -26,11 +30,24 @@ metrics:
       calls: 1
       total_seconds: 1428.0
       avg_seconds: 1428.0
+    plan-tests:
+      calls: 1
+      total_seconds: 382.0
+      avg_seconds: 382.0
+    plan-work:
+      calls: 1
+      total_seconds: 818.0
+      avg_seconds: 818.0
+    kickoff-branch:
+      calls: 0
+      total_seconds: 0
+      avg_seconds: 0
+      _start: '2026-07-28T17:53:39Z'
 release:
   ci_verified: true
   last_commit: 8efdce74
   last_epic: e80-verify-arc-hardening
 vcs:
   kind: jj
-  change_id: vzlvluwv
-  parent_bookmark: main
+  change_id: lzwnwpnm
+  parent_bookmark: null

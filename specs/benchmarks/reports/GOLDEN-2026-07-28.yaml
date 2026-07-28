@@ -1,5 +1,5 @@
-timestamp: "2026-07-28T16:46:33Z"
-git_commit: "bd132db23dc7a48737f607bc14768f6a6007791d"
+timestamp: "2026-07-28T17:55:58Z"
+git_commit: "b611d5a00bcd82c6c5163aa624b78ffec00d3966"
 suite: "golden-combined"
 mode: "daily"
 deterministic:
@@ -11,15 +11,15 @@ deterministic:
 gates:
   - name: compliance
     exit_code: 0
-    duration_seconds: 56.05
+    duration_seconds: 57.35
     status: pass
   - name: g04-selftest
     exit_code: 0
-    duration_seconds: .03
+    duration_seconds: .04
     status: pass
   - name: g06-migrate-version
     exit_code: 0
-    duration_seconds: 4.07
+    duration_seconds: 3.83
     status: pass
   - name: g07-negative-path
     exit_code: 0
@@ -27,11 +27,11 @@ gates:
     status: pass
   - name: g08-anti-vacuity
     exit_code: 0
-    duration_seconds: .09
+    duration_seconds: .08
     status: pass
   - name: g09-yaml-roundtrip
     exit_code: 0
-    duration_seconds: .12
+    duration_seconds: .11
     status: pass
   - name: g10-trace-anti-vacuity
     exit_code: 0
@@ -51,11 +51,11 @@ gates:
     status: pass
   - name: g13-test-orphans-selftest
     exit_code: 0
-    duration_seconds: .04
+    duration_seconds: .05
     status: pass
   - name: g13-test-orphans
     exit_code: 0
-    duration_seconds: .04
+    duration_seconds: .05
     status: pass
   - name: workflow-diagrams-fresh
     exit_code: 0
@@ -63,39 +63,39 @@ gates:
     status: pass
   - name: reference-nav-fresh
     exit_code: 0
-    duration_seconds: .05
+    duration_seconds: .06
     status: pass
   - name: g14-adapter-dispatch-selftest
     exit_code: 0
-    duration_seconds: .13
+    duration_seconds: .12
     status: pass
   - name: g14-adapter-dispatch
     exit_code: 0
-    duration_seconds: .08
+    duration_seconds: .07
     status: pass
   - name: target-contracts
     exit_code: 0
-    duration_seconds: .20
+    duration_seconds: .19
     status: pass
   - name: install-hub
     exit_code: 0
-    duration_seconds: 5.26
+    duration_seconds: 5.05
     status: pass
   - name: adapter-render
     exit_code: 0
-    duration_seconds: 7.02
+    duration_seconds: 3.72
     status: pass
   - name: adapters
     exit_code: 0
-    duration_seconds: 6.00
+    duration_seconds: 3.12
     status: pass
   - name: tombstone-mechanism
     exit_code: 0
-    duration_seconds: .31
+    duration_seconds: .47
     status: pass
   - name: trace-strict
     exit_code: 0
-    duration_seconds: 5.83
+    duration_seconds: 6.12
     status: pass
   - name: trace-matrix-size
     exit_code: 0
@@ -103,11 +103,11 @@ gates:
     status: pass
   - name: setup-no-pyyaml
     exit_code: 0
-    duration_seconds: 2.00
+    duration_seconds: 1.79
     status: pass
   - name: install-distribute-only
     exit_code: 0
-    duration_seconds: 38.13
+    duration_seconds: 39.67
     status: pass
   - name: completeness-critic-scope
     exit_code: 0
@@ -115,7 +115,7 @@ gates:
     status: pass
   - name: epics-wiki-zero-stories
     exit_code: 0
-    duration_seconds: 2.58
+    duration_seconds: 2.71
     status: pass
   - name: golden-g11-worktree-venv
     exit_code: 0
@@ -123,7 +123,7 @@ gates:
     status: pass
   - name: install-helpers
     exit_code: 0
-    duration_seconds: .05
+    duration_seconds: .07
     status: pass
   - name: project-runtime
     exit_code: 0
@@ -131,7 +131,7 @@ gates:
     status: pass
   - name: configurable-specs-root
     exit_code: 0
-    duration_seconds: 1.92
+    duration_seconds: 1.97
     status: pass
   - name: import-boundaries
     exit_code: 0
@@ -139,11 +139,11 @@ gates:
     status: pass
   - name: skill-catalog
     exit_code: 0
-    duration_seconds: 1.54
+    duration_seconds: 1.60
     status: pass
   - name: specs-parse
     exit_code: 0
-    duration_seconds: 1.38
+    duration_seconds: 1.39
     status: pass
   - name: story-verify-selftest
     exit_code: 0
@@ -151,7 +151,7 @@ gates:
     status: pass
   - name: story-verify
     exit_code: 0
-    duration_seconds: 201.27
+    duration_seconds: 188.18
     status: pass
 agent_stories:
   total: 0

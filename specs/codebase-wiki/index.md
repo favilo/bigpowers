@@ -1,6 +1,6 @@
 ---
 type: Index
-generated_at: 2026-07-28T16:53:04.382325+00:00
+generated_at: 2026-07-28T18:02:14.046323+00:00
 total_concepts: 128
 ---
 
@@ -43,7 +43,7 @@ Auto-generated OKF bundle from trace-stories.sh.
 | [e45s15](./e45s15.md) | release-branch / deploy: three-independent-facts verificatio | high | 42 |
 | [e45s16](./e45s16.md) | CLAUDE.md rtk mandate: wire rtk-ai/rtk PreToolUse hook | high | 4 |
 | [e45s17](./e45s17.md) | request-review: fan-out to parallel review subagents | high | 45 |
-| [e45s18](./e45s18.md) | audit-code / security-review: worktree-isolated parallel che | high | 299 |
+| [e45s18](./e45s18.md) | audit-code / security-review: worktree-isolated parallel che | high | 301 |
 | [e45s19](./e45s19.md) | Context7: bounded retry cap and explicit fallback block | high | 8 |
 | [e45s20](./e45s20.md) | Context7 / bts docs: wrap in ETag-revalidated fetch cache | high | 1 |
 | [e45s21](./e45s21.md) | seed-conventions / AGENTS.md: self-installing fenced markers | high | 41 |
@@ -56,7 +56,7 @@ Auto-generated OKF bundle from trace-stories.sh.
 | [e45s28](./e45s28.md) | request-review: hard max-iteration cap | high | 22 |
 | [e45s29](./e45s29.md) | requirements: ADDED/MODIFIED/REMOVED/RENAMED tags | high | 54 |
 | [e45s30](./e45s30.md) | subagent depth: formalize depth tiers | high | 36 |
-| [e45s31](./e45s31.md) | audit-code / deepen-architecture: churn-based look-here-firs | high | 300 |
+| [e45s31](./e45s31.md) | audit-code / deepen-architecture: churn-based look-here-firs | high | 302 |
 | [e45s32](./e45s32.md) | gate-trace / release-branch: adversarial-review refute frami | high | 41 |
 | [e45s33](./e45s33.md) | requirements: per-section approval state | high | 20 |
 | [e45s34](./e45s34.md) | develop-tdd: snapshot-before-transition hardening | high | 22 |
@@ -85,7 +85,7 @@ Auto-generated OKF bundle from trace-stories.sh.
 | [e51s01](./e51s01.md) | CONVENTIONS — Always Green, Shift Left, Discovered Defects,  | high | 8 |
 | [e51s02](./e51s02.md) | seed-conventions — Preflight default, solo-git default, embe | high | 48 |
 | [e51s03](./e51s03.md) | kickoff-branch + verify-work — Preflight hard block and CI g | high | 73 |
-| [e51s04](./e51s04.md) | audit-code, develop-tdd, quick-fix, fix-bug — fix-or-log rou | high | 384 |
+| [e51s04](./e51s04.md) | audit-code, develop-tdd, quick-fix, fix-bug — fix-or-log rou | high | 386 |
 | [e51s05](./e51s05.md) | CLAUDE.md — solo-default agent rules + bigpowers Preflight c | high | 7 |
 | [e53s01](./e53s01.md) | Commit the untracked GOLDEN baseline | high | 12 |
 | [e53s02](./e53s02.md) | Build the tombstone-alias mechanism | high | 6 |
@@ -135,6 +135,6 @@ Auto-generated OKF bundle from trace-stories.sh.
 | [e80s03](./e80s03.md) | develop-tdd RED commit isolation check | high | 25 |
 | [e80s04](./e80s04.md) | generalize-fix phase in validate-fix | high | 47 |
 | [e80s05](./e80s05.md) | security-review fixture table growth | high | 11 |
-| [e81s01](./e81s01.md) | Project runtime configuration resolver | high | 6 |
+| [e81s01](./e81s01.md) | Project runtime configuration resolver | high | 7 |
 | [e81s02](./e81s02.md) | Configurable artifact root across project-facing surfaces | high | 6 |
 | [e81s03](./e81s03.md) | Native Jujutsu lifecycle state | high | 4 |

@@ -1,6 +1,6 @@
 # Traceability Matrix
 
-**Generated:** 2026-07-28 16:53:04 UTC
+**Generated:** 2026-07-28 18:02:14 UTC
 **Total stories:** 128
 **Tagged stories:** 118
 **Dark stories:** 0
@@ -9,8 +9,8 @@
 
 ## Oracle Stats
 
-- **High** (explicit tag): 1504
-- **Medium** (file heuristic): 2198
+- **High** (explicit tag): 1505
+- **Medium** (file heuristic): 2204
 - **Low** (task reference): 81
 
 ## Story Coverage
@@ -50,7 +50,7 @@
 | e45s15 | release-branch / deploy: three-independent-facts verificatio | e45 | 2 | 5.0 | done | 42 |
 | e45s16 | CLAUDE.md rtk mandate: wire rtk-ai/rtk PreToolUse hook | e45 | 2 | 5.0 | done | 4 |
 | e45s17 | request-review: fan-out to parallel review subagents | e45 | 2 | 5.0 | done | 45 |
-| e45s18 | audit-code / security-review: worktree-isolated parallel che | e45 | 2 | 5.0 | done | 299 |
+| e45s18 | audit-code / security-review: worktree-isolated parallel che | e45 | 2 | 5.0 | done | 301 |
 | e45s19 | Context7: bounded retry cap and explicit fallback block | e45 | 2 | 5.0 | done | 8 |
 | e45s20 | Context7 / bts docs: wrap in ETag-revalidated fetch cache | e45 | 2 | 5.0 | done | 1 |
 | e45s21 | seed-conventions / AGENTS.md: self-installing fenced markers | e45 | 2 | 5.0 | done | 41 |
@@ -63,7 +63,7 @@
 | e45s28 | request-review: hard max-iteration cap | e45 | 2 | 5.0 | done | 22 |
 | e45s29 | requirements: ADDED/MODIFIED/REMOVED/RENAMED tags | e45 | 2 | 5.0 | done | 54 |
 | e45s30 | subagent depth: formalize depth tiers | e45 | 2 | 5.0 | done | 36 |
-| e45s31 | audit-code / deepen-architecture: churn-based look-here-firs | e45 | 2 | 5.0 | done | 300 |
+| e45s31 | audit-code / deepen-architecture: churn-based look-here-firs | e45 | 2 | 5.0 | done | 302 |
 | e45s32 | gate-trace / release-branch: adversarial-review refute frami | e45 | 2 | 5.0 | done | 41 |
 | e45s33 | requirements: per-section approval state | e45 | 2 | 5.0 | done | 20 |
 | e45s34 | develop-tdd: snapshot-before-transition hardening | e45 | 2 | 5.0 | done | 22 |
@@ -92,7 +92,7 @@
 | e51s01 | CONVENTIONS — Always Green, Shift Left, Discovered Defects,  | e51 | 3 | 7.0 | done | 8 |
 | e51s02 | seed-conventions — Preflight default, solo-git default, embe | e51 | 3 | 7.0 | done | 48 |
 | e51s03 | kickoff-branch + verify-work — Preflight hard block and CI g | e51 | 2 | 7.0 | done | 73 |
-| e51s04 | audit-code, develop-tdd, quick-fix, fix-bug — fix-or-log rou | e51 | 2 | 7.0 | done | 384 |
+| e51s04 | audit-code, develop-tdd, quick-fix, fix-bug — fix-or-log rou | e51 | 2 | 7.0 | done | 386 |
 | e51s05 | CLAUDE.md — solo-default agent rules + bigpowers Preflight c | e51 | 2 | 7.0 | done | 7 |
 | e53s01 | Commit the untracked GOLDEN baseline | e53 | 1 | 8.0 | done | 12 |
 | e53s02 | Build the tombstone-alias mechanism | e53 | 3 | 8.0 | done | 6 |
@@ -142,7 +142,7 @@
 | e80s03 | develop-tdd RED commit isolation check | e80 | 0 | 7.5 | done | 25 |
 | e80s04 | generalize-fix phase in validate-fix | e80 | 0 | 7.5 | done | 47 |
 | e80s05 | security-review fixture table growth | e80 | 0 | 7.5 | done | 11 |
-| e81s01 | Project runtime configuration resolver | e81 | 0 | 8.0 | backlog | 6 |
+| e81s01 | Project runtime configuration resolver | e81 | 0 | 8.0 | backlog | 7 |
 | e81s02 | Configurable artifact root across project-facing surfaces | e81 | 0 | 8.0 | backlog | 6 |
 | e81s03 | Native Jujutsu lifecycle state | e81 | 0 | 8.0 | backlog | 4 |
 

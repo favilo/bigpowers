@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T16:53:04.376521+00:00",
+  "generated_at": "2026-07-28T18:02:14.040177+00:00",
   "matrix_version": "1.0",
   "stories": [
     {
@@ -6168,6 +6168,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105559.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-234324.md",
           "line": 0,
           "confidence": "medium",
@@ -6463,6 +6469,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260703-154726.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6930,7 +6942,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 299
+      "link_count": 301
     },
     {
       "id": "e45s19",
@@ -9558,6 +9570,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105559.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-234324.md",
           "line": 0,
           "confidence": "medium",
@@ -9853,6 +9871,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260703-154726.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -10320,7 +10344,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 300
+      "link_count": 302
     },
     {
       "id": "e45s32",
@@ -17550,6 +17574,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105559.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-234324.md",
           "line": 0,
           "confidence": "medium",
@@ -17845,6 +17875,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260703-154726.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -18312,7 +18348,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 384
+      "link_count": 386
     },
     {
       "id": "e51s05",
@@ -24126,6 +24162,12 @@
           "method": "explicit_tag"
         },
         {
+          "file": "specs/tech-architecture/e81-TEST_PLAN_LATEST.md",
+          "line": 1,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
+        {
           "file": "specs/epics/e81-configurable-project-runtime/epic.yaml",
           "line": 1,
           "confidence": "high",
@@ -24150,7 +24192,7 @@
           "method": "task_reference"
         }
       ],
-      "link_count": 6
+      "link_count": 7
     },
     {
       "id": "e81s02",
@@ -24507,8 +24549,8 @@
     ],
     "stale_count": 115,
     "oracle_stats": {
-      "high": 1504,
-      "medium": 2198,
+      "high": 1505,
+      "medium": 2204,
       "low": 81
     }
   }
