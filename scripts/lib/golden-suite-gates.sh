@@ -65,6 +65,7 @@ GOLDEN_GATES=(
   "golden-g11-worktree-venv:bash scripts/test-golden-g11-worktree-venv.sh:false"
   "install-helpers:bash scripts/test-install-helpers.sh:false"
   "project-runtime:bash scripts/test-project-runtime.sh:false"
+  "project-vcs:bash scripts/test-project-vcs.sh:false"
   "configurable-specs-root:bash scripts/test-configurable-specs-root.sh:false"
   "import-boundaries:bash scripts/check-import-boundaries.sh:false"
   "skill-catalog:bash scripts/validate-skill-catalog.sh:false"
