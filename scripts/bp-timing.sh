@@ -4,10 +4,15 @@
 #        bash scripts/bp-timing.sh end <skill-name>
 # Requires: $PYTHON (for YAML-safe state updates)
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
+SCRIPT_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/lib" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_LIB_DIR/python-env.sh"
+# shellcheck disable=SC1091
+source "$SCRIPT_LIB_DIR/project-runtime.sh"
 
-STATE_YAML="specs/state.yaml"
-TIMINGS_KEY="metrics.skill_timings"
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+STATE_YAML="$(bp_specs_path "$PROJECT_ROOT" state.yaml)"
+mkdir -p "$(dirname "$STATE_YAML")"
 
 print_usage() {
   echo "Usage: $0 start|end <skill-name>" >&2

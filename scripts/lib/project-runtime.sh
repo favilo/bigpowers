@@ -63,9 +63,15 @@ bp_specs_path() {
   specs_dir="$(bp_specs_dir "$project_root")" || return
 
   if [[ "$specs_dir" == /* ]]; then
-    printf '%s/%s\n' "${specs_dir%/}" "${relative_path#/}"
-  else
+    if [[ -n "$relative_path" ]]; then
+      printf '%s/%s\n' "${specs_dir%/}" "${relative_path#/}"
+    else
+      printf '%s\n' "${specs_dir%/}"
+    fi
+  elif [[ -n "$relative_path" ]]; then
     printf '%s/%s/%s\n' "${project_root%/}" "${specs_dir%/}" "${relative_path#/}"
+  else
+    printf '%s/%s\n' "${project_root%/}" "${specs_dir%/}"
   fi
 }
 

@@ -62,7 +62,7 @@ cat > "$SURVEY_PROJECT/.specs/release-plan.yaml" <<'YAML'
 release:
   version: personal
 YAML
-SURVEY_OUTPUT="$(cd "$SURVEY_PROJECT" && bash "$ROOT/scripts/project-survey.sh" 2>&1 || true)"
+SURVEY_OUTPUT="$(cd "$SURVEY_PROJECT" && bash "$ROOT/scripts/project-survey.sh" 2>&1)" || true
 assert_contains "survey discovers configured root" "SPECS=true" "$SURVEY_OUTPUT"
 assert_contains "survey maps configured active flow" "Phase: Plan" "$SURVEY_OUTPUT"
 assert_contains "survey lists configured state" "state.yaml" "$SURVEY_OUTPUT"

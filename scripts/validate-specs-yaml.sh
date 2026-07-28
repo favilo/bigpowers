@@ -8,13 +8,14 @@
 # specs/**/*.yaml with PyYAML first, and runs the required-key checks
 # against the *parsed* objects, not against grep.
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
-
-# Resolve REPO_ROOT from script location
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/lib/python-env.sh"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/lib/project-runtime.sh"
 
-SPECS="${1:-$REPO_ROOT/specs}"
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+SPECS="${1:-$(bp_specs_path "$PROJECT_ROOT" "")}"
 
 err=0
 
