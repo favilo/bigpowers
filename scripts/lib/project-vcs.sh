@@ -10,15 +10,19 @@ PROJECT_VCS_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
 source "$PROJECT_VCS_LIB_DIR/project-runtime.sh"
 
-_bp_jj_snapshot_identity() {
-  local project_root="$1" change_id parent_bookmark
+_bp_jj_snapshot() {
+  local project_root="$1" change_id parent_bookmark status recent_logs
   change_id="$(jj --no-pager -R "$project_root" log -r '@' --no-graph \
     -T 'change_id.short()' 2>/dev/null || true)"
   parent_bookmark="$(jj --no-pager -R "$project_root" log \
     -r 'latest(ancestors(@) & bookmarks(), 1)' --no-graph \
     -T 'bookmarks' 2>/dev/null || true)"
-  printf 'identity_label=Change ID\nidentity=%s\nparent_bookmark=%s\n' \
-    "$change_id" "$parent_bookmark"
+  status="$(jj --no-pager -R "$project_root" status 2>/dev/null | tr '\n' ' ')"
+  recent_logs="$(jj --no-pager -R "$project_root" log -n 3 --no-graph \
+    -T 'change_id.short() ++ " " ++ description.first_line() ++ "\n"' \
+    2>/dev/null | tr '\n' ' ')"
+  printf 'identity_label=Change ID\nidentity=%s\nparent_bookmark=%s\nstatus=%s\nrecent_logs=%s\n' \
+    "$change_id" "$parent_bookmark" "$status" "$recent_logs"
 }
 
 _bp_git_snapshot() {
@@ -57,7 +61,7 @@ bp_vcs_snapshot() {
   _bp_validate_explicit_vcs "$project_root" "$vcs_kind" || return
   printf 'kind=%s\n' "$vcs_kind"
   case "$vcs_kind" in
-    jj) _bp_jj_snapshot_identity "$project_root" ;;
+    jj) _bp_jj_snapshot "$project_root" ;;
     git) _bp_git_snapshot "$project_root" ;;
   esac
 }

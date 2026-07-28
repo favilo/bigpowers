@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
+# story: e81s03
+# scenario: SC-e81s03-P1-02
 # project-survey.sh — automated project status for session-start hooks
 
 set -euo pipefail
 
 SCRIPT_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/lib" && pwd)"
 # shellcheck disable=SC1091
-source "$SCRIPT_LIB_DIR/project-runtime.sh"
+source "$SCRIPT_LIB_DIR/project-vcs.sh"
 PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
 SPECS_DIR="$(bp_specs_path "$PROJECT_ROOT" "")"
 
@@ -29,10 +31,18 @@ if [[ "$has_specs" == "true" ]]; then
   done | sort -u | tr '\n' ',' | sed 's/,$//')
 fi
 
-# 3. Git state (replaced by the VCS adapter in the Jujutsu slice)
-current_branch=$(git -C "$PROJECT_ROOT" branch --show-current 2>/dev/null || echo "not-a-repo")
-git_status=$(git -C "$PROJECT_ROOT" status --short 2>/dev/null | head -n 5 | tr '\n' ' ' | sed 's/"/\\"/g' || true)
-recent_logs=$(git -C "$PROJECT_ROOT" log --oneline -3 2>/dev/null | tr '\n' ' ' | sed 's/"/\\"/g' || true)
+# 3. VCS state
+vcs_snapshot="$(bp_vcs_snapshot "$PROJECT_ROOT")"
+vcs_value() {
+  local key="$1"
+  printf '%s\n' "$vcs_snapshot" | sed -n "s/^${key}=//p"
+}
+vcs_kind="$(vcs_value kind)"
+current_branch="$(vcs_value branch)"
+change_id="$(vcs_value identity)"
+parent_bookmark="$(vcs_value parent_bookmark)"
+vcs_status="$(vcs_value status)"
+recent_logs="$(vcs_value recent_logs)"
 
 # 4. Phase mapping logic (YAML-first)
 phase="Discover"
@@ -59,15 +69,23 @@ fi
 cat <<EOF
 [PROJECT SURVEY]
 Phase: $phase
-Branch: $current_branch
+VCS: $vcs_kind
 Files: CONVENTIONS=$has_conventions, CLAUDE=$has_claude, SPECS=$has_specs
 Specs Found: $specs_files
-Git Status: $git_status
+VCS Status: $vcs_status
 Recent Logs: $recent_logs
-
-Welcome to Bigpowers. I have analyzed the project state. 
-You are currently in the '$phase' phase on the '$current_branch' branch.
 EOF
+
+if [[ "$vcs_kind" == jj ]]; then
+  echo "Change ID: $change_id"
+  echo "Parent Bookmark: $parent_bookmark"
+else
+  echo "Branch: $current_branch"
+fi
+
+echo
+printf "Welcome to Bigpowers. I have analyzed the project state.\n"
+printf "You are currently in the '%s' phase using '%s'.\n" "$phase" "$vcs_kind"
 
 if [[ -f "$SPECS_DIR/release-plan.yaml" ]]; then
   echo "release-plan.yaml found. Read $SPECS_DIR/state.yaml for active epic/story."
