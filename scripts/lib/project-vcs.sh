@@ -4,6 +4,7 @@
 # scenario: SC-e81s03-P0-02
 # scenario: SC-e81s03-P0-03
 # scenario: SC-e81s03-P1-01
+# scenario: SC-e81s03-P0-05
 # Read-only VCS state adapter for consumer projects.
 
 PROJECT_VCS_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -63,5 +64,16 @@ bp_vcs_snapshot() {
   case "$vcs_kind" in
     jj) _bp_jj_snapshot "$project_root" ;;
     git) _bp_git_snapshot "$project_root" ;;
+  esac
+}
+
+bp_require_vcs_operation() {
+  local project_root="${1:-$PWD}" operation="${2:-}" vcs_kind
+  vcs_kind="$(bp_vcs_kind "$project_root")" || return
+  case "$vcs_kind:$operation" in
+    jj:land-branch|jj:git-worktree)
+      echo "bigpowers VCS: operation '$operation' is not supported for VCS 'jj'; use a Jujutsu workspace/bookmark workflow or select vcs: git" >&2
+      return 2
+      ;;
   esac
 }

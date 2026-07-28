@@ -8,7 +8,7 @@ description: Track implementation decisions and progress in specs/state.yaml to 
 # story: e45s23
 
 # Session State
-> **HARD GATE** — **HARD GATE** — Session state must be synchronized with git state. If state.yaml conflicts with the working tree, halt and ask for clarification. Do NOT assume state is correct.
+> **HARD GATE** — Session state must match the active VCS. Read `vcs.kind`; compare Git branch/hash or Jujutsu workspace/change ID. If state conflicts, halt and ask.
 
 
 Track the current state of implementation, including decisions made, pending tasks, and open questions, to ensure continuity across session boundaries and prevent "context rot."
@@ -53,7 +53,7 @@ handoff:
 If `specs/state.yaml` does not exist, or if starting a new major phase:
 
 - [ ] Read `specs/release-plan.yaml` and `specs/product/SCOPE_LATEST.yaml`.
-- [ ] Get git metadata: `git branch --show-current` and `git rev-parse --short HEAD`.
+- [ ] Get native metadata from `vcs.kind`: Git uses `git branch --show-current`; Jujutsu uses `jj status` and `jj log -r @ --no-graph -T 'change_id.short()'`.
 - [ ] Create `specs/state.yaml` with active flow, git, handoff, and epic cycle if in build.
 
 ### 2. Load (Context Refresh)
@@ -62,13 +62,13 @@ When starting a new session or after a significant context flush:
 
 - [ ] Read `specs/state.yaml` to understand where the previous agent left off.
 - [ ] Read `specs/execution-status.yaml` for story progress (do not infer from release-plan).
-- [ ] Verify git matches `state.yaml` `git.branch` / `git.hash`.
+- [ ] Verify native state matches `state.yaml`: Git branch/hash or Jujutsu workspace/change ID.
 
 ### 3. Update (Decision Point/Milestone)
 
 Whenever a significant decision is made or a milestone is reached:
 
-- [ ] Patch via `bash scripts/bp-yaml-set.sh specs/state.yaml git.hash <hash>` (or edit directly).
+- [ ] Patch the matching `git` or `vcs` keys via `bp-yaml-set.sh` (or edit directly).
 - [ ] Patch `handoff` and `learned_preferences` / `workspace_facts` in `CLAUDE.md` fenced block when durable user preferences or repo facts crystallize (e45s23).
 - [ ] Update `handoff.open_decisions` with rationale.
 - [ ] Update `epic_cycle` when advancing `ship-epic` steps.

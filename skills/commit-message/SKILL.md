@@ -16,7 +16,7 @@ description: Reviews working-tree changes, then drafts a Conventional Commits ti
 
 ## What "last chat" means
 
-- **Primary source of truth:** `git status`, `git diff` (unstaged), and `git diff --cached` (staged). Run these in the repo root (or the paths the user changed).
+- **Primary source of truth:** Read `state.yaml` `vcs.kind`. Git uses `git status`, `git diff`, and `git diff --cached`; Jujutsu uses `jj status`, `jj diff`, and `jj log -r @`. Run in the repo root.
 - **Context:** use the current conversation to summarize *intent* and to spot **breaking** API/behavior changes that diff alone may not show.
 - If the user tracks a session baseline (e.g. branch, tag, or `git stash create` at start), you may `git diff <baseline>..HEAD` plus uncommitted diffs; otherwise use only the index and working tree.
 
@@ -30,8 +30,8 @@ description: Reviews working-tree changes, then drafts a Conventional Commits ti
 6. **Note fix-ratio contribution** — Each `fix:` commit counts toward `metrics.commit_ratio.fix` in `specs/state.yaml`. After `release-branch`, `session-state` recalculates the ratio automatically. A high fix rate (>30%) triggers a deploy + smoke-test suggestion.
 7. **Deliver** — Output:
    - Proposed **full commit message** (title + optional body + footers).
-   - **Release bump** this commit would drive: `patch` | `minor` | `major` | `none`.
-   - Optional `git add …` and `git commit -m` instructions; do **not** run destructive git commands unless the user asked.
+   - **Release bump**: `patch` | `minor` | `major` | `none`.
+   - Optional native command: Git `git commit -m`; Jujutsu `jj commit -m`. Never omit `-m` or run destructive commands unless asked.
 
 ## Checklist before finalizing
 
