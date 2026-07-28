@@ -6,10 +6,12 @@
 
 const fs = require('fs');
 const path = require('path');
+const { specsPath } = require('./lib/project-runtime');
 
 const ROOT = path.resolve(__dirname, '..');
+const PROJECT_ROOT = process.env.BIGPOWERS_PROJECT_ROOT || process.cwd();
 const SKILLS_LOCK = path.join(ROOT, 'skills-lock.json');
-const STATE_YAML = path.join(ROOT, 'specs', 'state.yaml');
+const STATE_YAML = specsPath(PROJECT_ROOT, 'state.yaml');
 
 // Phase map — mirrors generate-skill-index.sh PHASE_MAP
 const PHASE_MAP = {
@@ -123,10 +125,10 @@ const TOOLS = {
   },
 
   bigpowers_get_state: {
-    description: 'Get the current bigpowers project state (active flow, epic, story, step) from specs/state.yaml.',
+    description: 'Get the current bigpowers project state from the configured artifact root.',
     inputSchema: { type: 'object', properties: {} },
     handler() {
-      if (!fs.existsSync(STATE_YAML)) return { error: 'specs/state.yaml not found' };
+      if (!fs.existsSync(STATE_YAML)) return { error: `${STATE_YAML} not found` };
       return { content: fs.readFileSync(STATE_YAML, 'utf8') };
     },
   },
