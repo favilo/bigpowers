@@ -33,7 +33,7 @@
     },
     "commit-message": {
       "description": "Reviews working-tree changes, then drafts a Conventional Commits title/body and states the semantic-release version bump a single such commit would imply. Also notes which defensive-code categories were touched. Use when the user wants to commit recent work, prepare a Conventional Commits message, or asks for semantic-release / semver-consistent messaging before git commit.",
-      "sha256": "1ed4ef65d813a84d",
+      "sha256": "138460434604ad3b",
       "path": "skills/commit-messageSKILL.md"
     },
     "compose-workflow": {
@@ -83,7 +83,7 @@
     },
     "develop-tdd": {
       "description": "Test-driven development with red-green-refactor loop using vertical slices. Use for features (epic tasks) or bugs (specs/bugs/BUG-*.md).",
-      "sha256": "d13bc1b61147fd42",
+      "sha256": "fa3f3d2d0b9f5694",
       "path": "skills/develop-tddSKILL.md"
     },
     "diagnose-root": {
@@ -113,7 +113,7 @@
     },
     "enforce-first": {
       "description": "Apply the F.I.R.S.T test quality rubric (per CONVENTIONS.md §Tests) to a test suite or individual tests. Use when develop-tdd is writing tests, when test quality needs to be checked, or when user mentions F.I.R.S.T or \"test quality\".",
-      "sha256": "d7c1150154db6da6",
+      "sha256": "584ef701420f3e75",
       "path": "skills/enforce-firstSKILL.md"
     },
     "evolve-skill": {
@@ -187,8 +187,8 @@
       "path": "skills/investigate-bugSKILL.md"
     },
     "kickoff-branch": {
-      "description": "Create a git worktree and feature branch, then verify a clean test baseline before any code is written. Use when starting a new feature or task, when user wants to work in isolation from main, or mentions \"start a branch\" or \"new worktree\".",
-      "sha256": "d94be12d4b29895b",
+      "description": "Create an isolated Git worktree/branch or Jujutsu workspace, then verify a clean test baseline before code. Use when starting a feature or task.",
+      "sha256": "29861812ecb6926d",
       "path": "skills/kickoff-branchSKILL.md"
     },
     "maintain-wiki": {
@@ -253,7 +253,7 @@
     },
     "release-branch": {
       "description": "Make the merge/PR/keep/discard decision for a feature branch, verify coverage gates, create the PR with gh, and clean up the worktree. Use when a feature is done and ready to ship, or when user says \"release\", \"merge\", or \"open a PR\".",
-      "sha256": "4479807337f84915",
+      "sha256": "be878ba7836dd6b3",
       "path": "skills/release-branchSKILL.md"
     },
     "request-review": {
@@ -313,7 +313,7 @@
     },
     "session-state": {
       "description": "Track implementation decisions and progress in specs/state.yaml to prevent context rot. Use at the start of a session to load context, and whenever a significant decision is made or a milestone is reached.",
-      "sha256": "943075be867cd50e",
+      "sha256": "f0dbe7fc304e6a7c",
       "path": "skills/session-stateSKILL.md"
     },
     "setup-environment": {
@@ -353,7 +353,7 @@
     },
     "survey-context": {
       "description": "Per-task context bootstrap — reads existing specs/ and tech-architecture docs to map the current lifecycle phase and suggest the next skill. Use at the start of any task, when returning after a break, or when unsure what to do next. For deriving a tech-stack doc from scratch, use map-codebase first.",
-      "sha256": "ef837ae3e822e9a3",
+      "sha256": "38cf8fee401bbf0b",
       "path": "skills/survey-contextSKILL.md"
     },
     "terse-mode": {
@@ -368,7 +368,7 @@
     },
     "using-bigpowers": {
       "description": "One-time bootstrap that introduces the bigpowers skills system, the PMBOK lifecycle arc, and tells you which skill to call first for your situation. Use when starting with bigpowers for the first time, when user asks \"where do I start?\", or when the skills system needs to be explained.",
-      "sha256": "bb98f00ad1e22422",
+      "sha256": "f8bdd95a91c8493e",
       "path": "skills/using-bigpowersSKILL.md"
     },
     "validate-contracts": {

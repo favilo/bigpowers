@@ -16,9 +16,10 @@
 #   2 — --strict mode: P0 story has 0% coverage
 
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
-
-source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/python-env.sh"
+source "$SCRIPT_DIR/lib/project-runtime.sh"
+source "$SCRIPT_DIR/lib/skill-common.sh"
 
 MODE=""
 STRICT=0
@@ -54,11 +55,22 @@ USAGE
 done
 
 resolve_repo_root
-MATRIX_JSON="$REPO_ROOT/specs/traceability-matrix.json"
-TRACE_MD="$REPO_ROOT/specs/TRACEABILITY_LATEST.md"
-RELEASE_PLAN="$REPO_ROOT/specs/release-plan.yaml"
-EXEC_STATUS="$REPO_ROOT/specs/execution-status.yaml"
-OKF_DIR="$REPO_ROOT/specs/codebase-wiki"
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+PROJECT_ROOT="$(cd "$PROJECT_ROOT" 2>/dev/null && pwd)" || {
+  echo "trace-stories.sh: project root not found: ${BIGPOWERS_PROJECT_ROOT:-$PWD}" >&2
+  exit 1
+}
+SPECS_ROOT="$(bp_specs_path "$PROJECT_ROOT" "")" || exit 1
+MATRIX_JSON="$(bp_specs_path "$PROJECT_ROOT" traceability-matrix.json)"
+TRACE_MD="$(bp_specs_path "$PROJECT_ROOT" TRACEABILITY_LATEST.md)"
+RELEASE_PLAN="$(bp_specs_path "$PROJECT_ROOT" release-plan.yaml)"
+EXEC_STATUS="$(bp_specs_path "$PROJECT_ROOT" execution-status.yaml)"
+OKF_DIR="$(bp_specs_path "$PROJECT_ROOT" codebase-wiki)"
+
+if [[ ! -d "$SPECS_ROOT" ]]; then
+  echo "trace-stories.sh: specs directory not found: $SPECS_ROOT (project: $PROJECT_ROOT)" >&2
+  exit 1
+fi
 
 if [[ ! -f "$RELEASE_PLAN" ]]; then
   echo "trace-stories.sh: release-plan.yaml: not found at $RELEASE_PLAN" >&2
@@ -69,5 +81,5 @@ if [[ ! -f "$EXEC_STATUS" ]]; then
   exit 1
 fi
 
-exec $PYTHON "$(dirname "${BASH_SOURCE[0]}")/lib/trace-stories.py" \
-  "$REPO_ROOT" "$MATRIX_JSON" "$TRACE_MD" "$OKF_DIR" "$STRICT" "$MODE"
+exec "$PYTHON" "$SCRIPT_DIR/lib/trace-stories.py" \
+  "$PROJECT_ROOT" "$SPECS_ROOT" "$MATRIX_JSON" "$TRACE_MD" "$OKF_DIR" "$STRICT" "$MODE"

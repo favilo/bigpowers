@@ -16,6 +16,15 @@ on:
       - 'scripts/build-skill-index.sh'
       - 'scripts/trace-stories.sh'
       - 'scripts/lib/trace-stories.py'
+      - 'scripts/test-consumer-project-gates.sh'
+      - 'scripts/check-blind-spots.sh'
+      - 'scripts/check-spec-drift.sh'
+      - 'scripts/check-spec-version-gap.sh'
+      - 'scripts/golden-g12-status-consistency.sh'
+      - 'scripts/run-gate-trace-verify.sh'
+      - 'scripts/lib/completeness-critic.sh'
+      - 'scripts/lib/blind-spots.py'
+      - 'scripts/lib/project-runtime.sh'
       - 'package.json'
       - 'specs/state.yaml'
       - 'specs/release-plan.yaml'
@@ -57,6 +66,9 @@ jobs:
             git diff --name-only .cursor/rules .gemini/extensions/bigpowers .pi SKILL-INDEX.md skills-lock.json README.md specs/SKILL-SEARCH-INDEX_LATEST.md
             exit 1
           }
+
+      - name: Consumer project gate fixture
+        run: bash scripts/test-consumer-project-gates.sh
 
       - name: Traceability gate (--strict)
         run: |

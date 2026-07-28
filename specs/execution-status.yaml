@@ -399,6 +399,10 @@ development_status:
   e80s03: done
   e80s04: done
   e80s05: done
+  e81: done
+  e81s01: done
+  e81s02: done
+  e81s03: done
   generated_at: '2026-07-07T04:00:00Z'
   heuristic_ratio: 0.8
   verdict: PASS
@@ -743,6 +747,11 @@ epics:
     title: 'Verify arc hardening (#97 + #98)'
     wsjf: 7.5
     total_bcps: 10
+  e81:
+    status: done
+    title: Configurable project runtime
+    wsjf: 8.0
+    total_bcps: 12
 stories:
   e01s01:
     status: done
@@ -3470,3 +3479,33 @@ stories:
     tasks_failing: 0
     risk_max: P1
     security_max: high
+  e81s01:
+    status: done
+    title: Project runtime configuration resolver
+    bcps: 3
+    epic: e81
+    tasks_total: 2
+    tasks_passing: 2
+    tasks_failing: 0
+    risk_max: P1
+    security_max: none
+  e81s02:
+    status: done
+    title: Configurable artifact root across project-facing surfaces
+    bcps: 4
+    epic: e81
+    tasks_total: 3
+    tasks_passing: 3
+    tasks_failing: 0
+    risk_max: P1
+    security_max: low
+  e81s03:
+    status: done
+    title: Native Jujutsu lifecycle state
+    bcps: 5
+    epic: e81
+    tasks_total: 4
+    tasks_passing: 4
+    tasks_failing: 0
+    risk_max: P0
+    security_max: low

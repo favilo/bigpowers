@@ -33,9 +33,17 @@
 #         deliberately injected drift — a vacuous gate, G-08 bug class)
 
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/python-env.sh"
+source "$SCRIPT_DIR/lib/project-runtime.sh"
+source "$SCRIPT_DIR/lib/skill-common.sh"
 resolve_repo_root
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+PROJECT_ROOT="$(cd "$PROJECT_ROOT" 2>/dev/null && pwd)" || {
+  echo "golden-g12-status-consistency.sh: project root not found: ${BIGPOWERS_PROJECT_ROOT:-$PWD}" >&2
+  exit 1
+}
+SPECS_ROOT="$(bp_specs_path "$PROJECT_ROOT" "")" || exit 1
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -217,7 +225,7 @@ fi
 
 echo "=== G-12: Planning SoT Consistency ==="
 set +e
-output=$(check_tree "$REPO_ROOT/specs" 2>&1)
+output=$(check_tree "$SPECS_ROOT" 2>&1)
 actual_exit=$?
 set -e
 echo "$output"

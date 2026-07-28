@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T18:02:14.040177+00:00",
+  "generated_at": "2026-07-30T21:29:18.414590+00:00",
   "matrix_version": "1.0",
   "stories": [
     {
@@ -9,6 +9,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -90,6 +91,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/steps/given-a-project-with-bigpowers-conventions.sh",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/epics/archive/e37-reach/e37s02-tasks.yaml",
           "line": 0,
           "confidence": "low",
@@ -120,7 +127,7 @@
           "method": "task_reference"
         }
       ],
-      "link_count": 18
+      "link_count": 19
     },
     {
       "id": "e37s02",
@@ -129,6 +136,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -171,6 +179,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 1,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -243,6 +252,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -279,14 +289,9 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 5,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
-        {
-          "file": "scripts/golden-g13-test-orphans.sh",
-          "line": 2,
-          "confidence": "high",
-          "method": "explicit_tag"
-        },
         {
           "file": "scripts/generate-workflow-diagrams.sh",
           "line": 2,
@@ -301,6 +306,12 @@
         },
         {
           "file": "scripts/validate-targets-yaml.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
+        {
+          "file": "scripts/golden-g13-script-orphans.sh",
           "line": 2,
           "confidence": "high",
           "method": "explicit_tag"
@@ -519,6 +530,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -597,6 +609,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 5,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -687,6 +700,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -765,6 +779,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -807,6 +822,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 4,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -867,6 +883,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -891,6 +908,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -933,6 +951,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -981,6 +1000,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1053,6 +1073,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1089,6 +1110,7 @@
       "epic_title": "Reach \u2014 Universal Agent Portability",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e37-reach/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1167,6 +1189,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 3,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1263,8 +1286,15 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
+        {
+          "file": "scripts/golden-g15-compliance-runner-selftest.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
         {
           "file": "scripts/validate-skill-description.sh",
           "line": 2,
@@ -1340,6 +1370,12 @@
         {
           "file": ".windsurf/rules/craft-skill.md",
           "line": 7,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
+        {
+          "file": "specs/verifications/compliance-margin-and-orphans-verify.yaml",
+          "line": 1,
           "confidence": "high",
           "method": "explicit_tag"
         },
@@ -1452,7 +1488,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 31
+      "link_count": 33
     },
     {
       "id": "e45s03",
@@ -1461,6 +1497,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 3,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1497,6 +1534,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 3,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -1707,6 +1745,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 4,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -2079,6 +2118,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -2307,6 +2347,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -2739,6 +2780,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -3015,6 +3057,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -3546,6 +3589,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/compliance-margin-and-orphans-verify.yaml",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/steps/and-i-should-push-back-if-a-task-is-too-simple-to-need-a-plan.sh",
           "line": 0,
           "confidence": "medium",
@@ -3624,7 +3673,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 101
+      "link_count": 102
     },
     {
       "id": "e45s10",
@@ -3633,6 +3682,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -3687,6 +3737,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -3825,6 +3876,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -4062,18 +4114,6 @@
           "method": "file_heuristic"
         },
         {
-          "file": "scripts/install-cursor-skills.sh",
-          "line": 0,
-          "confidence": "medium",
-          "method": "file_heuristic"
-        },
-        {
-          "file": "scripts/install-cursor-skills-local.sh",
-          "line": 0,
-          "confidence": "medium",
-          "method": "file_heuristic"
-        },
-        {
           "file": ".kilocode/rules/search-skills.md",
           "line": 0,
           "confidence": "medium",
@@ -4206,7 +4246,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 63
+      "link_count": 61
     },
     {
       "id": "e45s13",
@@ -4215,6 +4255,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -4401,6 +4442,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -4551,6 +4593,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -4815,6 +4858,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -4851,6 +4895,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -5133,6 +5178,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -5490,6 +5536,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-112622.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174148.md",
           "line": 0,
           "confidence": "medium",
@@ -5616,6 +5668,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120206.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260622-001710.md",
           "line": 0,
           "confidence": "medium",
@@ -5713,6 +5771,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-154339.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124638.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -5827,6 +5891,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-223249.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-183845.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6000,6 +6070,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121007.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260704-000357.md",
           "line": 0,
           "confidence": "medium",
@@ -6025,6 +6101,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-200136.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-141719.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6127,6 +6209,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-150417.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120255.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6306,6 +6394,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124542.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164050.md",
           "line": 0,
           "confidence": "medium",
@@ -6378,6 +6472,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121103.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174025.md",
           "line": 0,
           "confidence": "medium",
@@ -6403,6 +6503,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-081618.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182708.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6475,6 +6581,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-142616.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6703,6 +6815,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164429.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182805.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -6942,7 +7060,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 301
+      "link_count": 313
     },
     {
       "id": "e45s19",
@@ -6951,6 +7069,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7011,6 +7130,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7029,6 +7149,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7287,6 +7408,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7317,6 +7439,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7455,6 +7578,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7479,6 +7603,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 4,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7521,6 +7646,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7701,6 +7827,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7821,6 +7948,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -7965,6 +8093,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -8301,6 +8430,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -8529,6 +8659,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -8892,6 +9023,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-112622.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174148.md",
           "line": 0,
           "confidence": "medium",
@@ -9018,6 +9155,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120206.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260622-001710.md",
           "line": 0,
           "confidence": "medium",
@@ -9115,6 +9258,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-154339.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124638.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -9229,6 +9378,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-223249.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-183845.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -9402,6 +9557,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121007.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260704-000357.md",
           "line": 0,
           "confidence": "medium",
@@ -9427,6 +9588,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-200136.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-141719.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -9529,6 +9696,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-150417.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120255.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -9708,6 +9881,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124542.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164050.md",
           "line": 0,
           "confidence": "medium",
@@ -9780,6 +9959,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121103.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174025.md",
           "line": 0,
           "confidence": "medium",
@@ -9805,6 +9990,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-081618.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182708.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -9877,6 +10068,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-142616.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -10105,6 +10302,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164429.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182805.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -10344,7 +10547,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 302
+      "link_count": 314
     },
     {
       "id": "e45s32",
@@ -10353,6 +10556,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -10611,6 +10815,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -10743,6 +10948,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -10887,6 +11093,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11031,6 +11238,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11055,6 +11263,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11205,6 +11414,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11424,18 +11634,6 @@
           "method": "explicit_tag"
         },
         {
-          "file": "scripts/install-cursor-skills.sh",
-          "line": 0,
-          "confidence": "medium",
-          "method": "file_heuristic"
-        },
-        {
-          "file": "scripts/install-cursor-skills-local.sh",
-          "line": 0,
-          "confidence": "medium",
-          "method": "file_heuristic"
-        },
-        {
           "file": "specs/bugs/BUG-2026-07-26-null-skill-adapters-install-nothing.md",
           "line": 0,
           "confidence": "medium",
@@ -11448,7 +11646,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 40
+      "link_count": 38
     },
     {
       "id": "e45s39",
@@ -11457,6 +11655,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11577,6 +11776,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11751,6 +11951,7 @@
       "epic_title": "Quality Core \u2014 Skill Hardening & Verification Patterns",
       "bcp": 2,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/archive/e45-quality-core/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -11895,6 +12096,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -12030,6 +12232,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/skills-wiki/skills/maintain-wiki.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/bugs/BUG-2026-07-24-installer-spinner-freezes-during-sync.okf.md",
           "line": 0,
           "confidence": "medium",
@@ -12096,7 +12304,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 33
+      "link_count": 34
     },
     {
       "id": "e48s02",
@@ -12105,10 +12313,17 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
           "file": "scripts/run-verification-gates.sh",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "scripts/golden-g15-compliance-runner-selftest.sh",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -12270,7 +12485,19 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-2026-07-29.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/GOLDEN-2026-07-05.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-2026-07-30.okf.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -12282,13 +12509,25 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/GOLDEN-2026-07-29.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-2026-07-28.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/GOLDEN-2026-07-30.okf.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
         }
       ],
-      "link_count": 30
+      "link_count": 35
     },
     {
       "id": "e48s03",
@@ -12297,6 +12536,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 1,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -13245,6 +13485,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -13329,6 +13570,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 1,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14376,7 +14618,19 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-2026-07-29.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/GOLDEN-2026-07-05.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-2026-07-30.okf.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -14388,7 +14642,19 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/GOLDEN-2026-07-29.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-2026-07-28.okf.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/GOLDEN-2026-07-30.okf.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -14400,7 +14666,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 178
+      "link_count": 182
     },
     {
       "id": "e48s06",
@@ -14409,6 +14675,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14481,6 +14748,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 3,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14505,6 +14773,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 1,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14565,6 +14834,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14589,6 +14859,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 2,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14640,6 +14911,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/steps/given-a-project-with-bigpowers-conventions.sh",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/steps/and-information-should-be-hidden-within-modules-not-leaked.sh",
           "line": 0,
           "confidence": "medium",
@@ -14676,7 +14953,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 14
+      "link_count": 15
     },
     {
       "id": "e48s11",
@@ -14685,6 +14962,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 5,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14877,6 +15155,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 5,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -14943,6 +15222,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 4,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15069,6 +15349,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 4,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15165,6 +15446,7 @@
       "epic_title": "Foundation \u2014 Knowledge Layer + Process Maturity",
       "bcp": 4,
       "wsjf": 2.5,
+      "spec_path": "specs/epics/archive/e48-foundation/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15219,6 +15501,7 @@
       "epic_title": "Always Green \u2014 Shift Left, Preflight Hard Block & Fix-or-Log Doctrine",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e51-always-green-shift-left/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15279,6 +15562,7 @@
       "epic_title": "Always Green \u2014 Shift Left, Preflight Hard Block & Fix-or-Log Doctrine",
       "bcp": 3,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e51-always-green-shift-left/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15579,6 +15863,7 @@
       "epic_title": "Always Green \u2014 Shift Left, Preflight Hard Block & Fix-or-Log Doctrine",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e51-always-green-shift-left/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -15978,6 +16263,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/compliance-margin-and-orphans-verify.yaml",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/steps/then-skills-should-include-bold-hard-gate-callout-blocks.sh",
           "line": 0,
           "confidence": "medium",
@@ -16020,7 +16311,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 73
+      "link_count": 74
     },
     {
       "id": "e51s04",
@@ -16029,6 +16320,7 @@
       "epic_title": "Always Green \u2014 Shift Left, Preflight Hard Block & Fix-or-Log Doctrine",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e51-always-green-shift-left/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -16896,6 +17188,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-112622.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174148.md",
           "line": 0,
           "confidence": "medium",
@@ -17022,6 +17320,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120206.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260622-001710.md",
           "line": 0,
           "confidence": "medium",
@@ -17119,6 +17423,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-154339.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124638.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -17233,6 +17543,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-223249.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-183845.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -17406,6 +17722,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121007.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260704-000357.md",
           "line": 0,
           "confidence": "medium",
@@ -17431,6 +17753,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260702-200136.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-141719.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -17533,6 +17861,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-150417.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-120255.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -17712,6 +18046,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-124542.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164050.md",
           "line": 0,
           "confidence": "medium",
@@ -17784,6 +18124,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/reports/audit-cleancode-20260728-121103.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/reports/audit-cleancode-20260703-174025.md",
           "line": 0,
           "confidence": "medium",
@@ -17809,6 +18155,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260704-081618.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182708.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -17881,6 +18233,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260728-105502.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260730-142616.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -18109,6 +18467,12 @@
         },
         {
           "file": "specs/verifications/reports/audit-cleancode-20260705-164429.md",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/reports/audit-cleancode-20260729-182805.md",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -18348,7 +18712,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 386
+      "link_count": 398
     },
     {
       "id": "e51s05",
@@ -18357,6 +18721,7 @@
       "epic_title": "Always Green \u2014 Shift Left, Preflight Hard Block & Fix-or-Log Doctrine",
       "bcp": 2,
       "wsjf": 7.0,
+      "spec_path": "specs/epics/archive/e51-always-green-shift-left/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18411,6 +18776,7 @@
       "epic_title": "Establish Migration Baseline \u2014 bigpowers-to-bigspec Readiness",
       "bcp": 1,
       "wsjf": 8.0,
+      "spec_path": "specs/epics/archive/e53-establish-migration-baseline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18495,6 +18861,7 @@
       "epic_title": "Establish Migration Baseline \u2014 bigpowers-to-bigspec Readiness",
       "bcp": 3,
       "wsjf": 8.0,
+      "spec_path": "specs/epics/archive/e53-establish-migration-baseline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18543,6 +18910,7 @@
       "epic_title": "Establish Migration Baseline \u2014 bigpowers-to-bigspec Readiness",
       "bcp": 2,
       "wsjf": 8.0,
+      "spec_path": "specs/epics/archive/e53-establish-migration-baseline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18564,7 +18932,19 @@
           "method": "file_heuristic"
         },
         {
+          "file": "scripts/golden-g15-compliance-runner-selftest.sh",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "scripts/golden-g10-trace-anti-vacuity.sh",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "scripts/test-consumer-project-gates.sh",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -18744,12 +19124,6 @@
           "method": "file_heuristic"
         },
         {
-          "file": "specs/conventions-wiki/pre-merge-golden-gate.md",
-          "line": 0,
-          "confidence": "medium",
-          "method": "file_heuristic"
-        },
-        {
           "file": "specs/skills-wiki/skills/gate-trace.md",
           "line": 0,
           "confidence": "medium",
@@ -18840,7 +19214,7 @@
           "method": "file_heuristic"
         }
       ],
-      "link_count": 49
+      "link_count": 50
     },
     {
       "id": "e53s04",
@@ -18849,6 +19223,7 @@
       "epic_title": "Establish Migration Baseline \u2014 bigpowers-to-bigspec Readiness",
       "bcp": 3,
       "wsjf": 8.0,
+      "spec_path": "specs/epics/archive/e53-establish-migration-baseline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18879,6 +19254,7 @@
       "epic_title": "Freeze Catalog Drift \u2014 Stable Baseline Before Skill Reclassification",
       "bcp": 2,
       "wsjf": 6.7,
+      "spec_path": "specs/epics/archive/e54-freeze-catalog-drift/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -18945,6 +19321,7 @@
       "epic_title": "Freeze Catalog Drift \u2014 Stable Baseline Before Skill Reclassification",
       "bcp": 3,
       "wsjf": 6.7,
+      "spec_path": "specs/epics/archive/e54-freeze-catalog-drift/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19041,6 +19418,7 @@
       "epic_title": "Freeze Catalog Drift \u2014 Stable Baseline Before Skill Reclassification",
       "bcp": 1,
       "wsjf": 6.7,
+      "spec_path": "specs/epics/archive/e54-freeze-catalog-drift/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19323,6 +19701,7 @@
       "epic_title": "Extract Constitution \u2014 Consolidate Doctrine into One File",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e55-extract-constitution/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19365,6 +19744,7 @@
       "epic_title": "Extract Constitution \u2014 Consolidate Doctrine into One File",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e55-extract-constitution/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19401,6 +19781,7 @@
       "epic_title": "Extract Constitution \u2014 Consolidate Doctrine into One File",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e55-extract-constitution/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19449,6 +19830,7 @@
       "epic_title": "Interactive Installer \u2014 BMAD-Polished Setup for bigpowers",
       "bcp": 0,
       "wsjf": 9.0,
+      "spec_path": "specs/epics/e60-interactive-installer/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19515,6 +19897,7 @@
       "epic_title": "Integration: Hermes Agent \u2014 Skills + 3 Hook Systems",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e61-integration-hermes/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19587,6 +19970,7 @@
       "epic_title": "Integration: Hermes Agent \u2014 Skills + 3 Hook Systems",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e61-integration-hermes/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19689,6 +20073,7 @@
       "epic_title": "Integration: OpenCode \u2014 Skills + No Hooks",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e62-integration-opencode/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19713,6 +20098,7 @@
       "epic_title": "Integration: OpenCode \u2014 Skills + No Hooks",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e62-integration-opencode/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19821,6 +20207,7 @@
       "epic_title": "Integration: Gemini CLI \u2014 Extensions + Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e64-integration-gemini/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -19947,6 +20334,7 @@
       "epic_title": "Integration: Gemini CLI \u2014 Extensions + Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e64-integration-gemini/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20049,6 +20437,7 @@
       "epic_title": "Integration: Codex CLI \u2014 AGENTS.md + Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e65-integration-codex/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20079,6 +20468,7 @@
       "epic_title": "Integration: Codex CLI \u2014 AGENTS.md + Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e65-integration-codex/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20187,6 +20577,7 @@
       "epic_title": "Integration: Cline \u2014 Plugins + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e66-integration-cline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20217,6 +20608,7 @@
       "epic_title": "Integration: Cline \u2014 Plugins + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e66-integration-cline/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20325,6 +20717,7 @@
       "epic_title": "Integration: Kilo \u2014 Skills + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e67-integration-kilo/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20355,6 +20748,7 @@
       "epic_title": "Integration: Kilo \u2014 Skills + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e67-integration-kilo/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20463,6 +20857,7 @@
       "epic_title": "Integration: Qwen Code \u2014 Skills + Full Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e68-integration-qwen-code/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20511,6 +20906,7 @@
       "epic_title": "Integration: Qwen Code \u2014 Skills + Full Hooks",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e68-integration-qwen-code/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20625,6 +21021,7 @@
       "epic_title": "Integration: MiMo Code \u2014 Skills + Plugins (No Hooks)",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e69-integration-mimo-code/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20697,6 +21094,7 @@
       "epic_title": "Integration: MiMo Code \u2014 Skills + Plugins (No Hooks)",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e69-integration-mimo-code/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20793,6 +21191,7 @@
       "epic_title": "Integration: Trae \u2014 Skills + Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e70-integration-trae/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20823,6 +21222,7 @@
       "epic_title": "Integration: Trae \u2014 Skills + Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e70-integration-trae/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20931,6 +21331,7 @@
       "epic_title": "Integration: Copilot \u2014 Instructions (No Hooks)",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e71-integration-copilot/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -20955,6 +21356,7 @@
       "epic_title": "Integration: Copilot \u2014 Instructions (No Hooks)",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e71-integration-copilot/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21063,6 +21465,7 @@
       "epic_title": "Integration: CodeBuddy \u2014 Skills + 27+ Hook Events",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e72-integration-codebuddy/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21093,6 +21496,7 @@
       "epic_title": "Integration: CodeBuddy \u2014 Skills + 27+ Hook Events",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e72-integration-codebuddy/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21201,6 +21605,7 @@
       "epic_title": "Integration: Windsurf \u2014 Skills + Cascade Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e73-integration-windsurf/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21231,6 +21636,7 @@
       "epic_title": "Integration: Windsurf \u2014 Skills + Cascade Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e73-integration-windsurf/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21339,6 +21745,7 @@
       "epic_title": "Integration: Antigravity CLI \u2014 Google's New CLI",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e74-integration-antigravity/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21393,6 +21800,7 @@
       "epic_title": "Integration: Antigravity CLI \u2014 Google's New CLI",
       "bcp": 0,
       "wsjf": 4.0,
+      "spec_path": "specs/epics/e74-integration-antigravity/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21561,6 +21969,7 @@
       "epic_title": "Integration: ZCode \u2014 Skills + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e76-integration-zcode/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21621,6 +22030,7 @@
       "epic_title": "Integration: ZCode \u2014 Skills + Plugin Hooks",
       "bcp": 0,
       "wsjf": 5.0,
+      "spec_path": "specs/epics/e76-integration-zcode/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21729,6 +22139,7 @@
       "epic_title": "Agentic Controlled English (STE-style instruction precision)",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e79-agentic-ste/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -21789,6 +22200,7 @@
       "epic_title": "Agentic Controlled English (STE-style instruction precision)",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e79-agentic-ste/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -22017,6 +22429,7 @@
       "epic_title": "Agentic Controlled English (STE-style instruction precision)",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e79-agentic-ste/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -22173,6 +22586,7 @@
       "epic_title": "Agentic Controlled English (STE-style instruction precision)",
       "bcp": 0,
       "wsjf": 6.0,
+      "spec_path": "specs/epics/e79-agentic-ste/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -22329,6 +22743,7 @@
       "epic_title": "Verify arc hardening (#97 +",
       "bcp": 0,
       "wsjf": 7.5,
+      "spec_path": "specs/epics/e80-verify-arc-hardening/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -23010,6 +23425,12 @@
           "method": "file_heuristic"
         },
         {
+          "file": "specs/verifications/e81s03-verify.yaml",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
           "file": "specs/verifications/e18s01-verify.yaml",
           "line": 0,
           "confidence": "medium",
@@ -23095,6 +23516,12 @@
         },
         {
           "file": "specs/verifications/e25s03-verify.yaml",
+          "line": 0,
+          "confidence": "medium",
+          "method": "file_heuristic"
+        },
+        {
+          "file": "specs/verifications/compliance-margin-and-orphans-verify.yaml",
           "line": 0,
           "confidence": "medium",
           "method": "file_heuristic"
@@ -23220,7 +23647,7 @@
           "method": "task_reference"
         }
       ],
-      "link_count": 148
+      "link_count": 150
     },
     {
       "id": "e80s02",
@@ -23229,6 +23656,7 @@
       "epic_title": "Verify arc hardening (#97 +",
       "bcp": 0,
       "wsjf": 7.5,
+      "spec_path": "specs/epics/e80-verify-arc-hardening/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -23613,6 +24041,7 @@
       "epic_title": "Verify arc hardening (#97 +",
       "bcp": 0,
       "wsjf": 7.5,
+      "spec_path": "specs/epics/e80-verify-arc-hardening/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -23775,6 +24204,7 @@
       "epic_title": "Verify arc hardening (#97 +",
       "bcp": 0,
       "wsjf": 7.5,
+      "spec_path": "specs/epics/e80-verify-arc-hardening/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -24069,6 +24499,7 @@
       "epic_title": "Verify arc hardening (#97 +",
       "bcp": 0,
       "wsjf": 7.5,
+      "spec_path": "specs/epics/e80-verify-arc-hardening/epic.yaml",
       "status": "done",
       "links": [
         {
@@ -24147,8 +24578,15 @@
       "epic_title": "Configurable project runtime",
       "bcp": 0,
       "wsjf": 8.0,
-      "status": "backlog",
+      "spec_path": "specs/epics/e81-configurable-project-runtime/epic.yaml",
+      "status": "done",
       "links": [
+        {
+          "file": "scripts/test-consumer-project-gates.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
         {
           "file": "scripts/test-project-runtime.sh",
           "line": 2,
@@ -24192,7 +24630,7 @@
           "method": "task_reference"
         }
       ],
-      "link_count": 7
+      "link_count": 8
     },
     {
       "id": "e81s02",
@@ -24201,7 +24639,8 @@
       "epic_title": "Configurable project runtime",
       "bcp": 0,
       "wsjf": 8.0,
-      "status": "backlog",
+      "spec_path": "specs/epics/e81-configurable-project-runtime/epic.yaml",
+      "status": "done",
       "links": [
         {
           "file": "scripts/test-configurable-specs-root.sh",
@@ -24249,8 +24688,27 @@
       "epic_title": "Configurable project runtime",
       "bcp": 0,
       "wsjf": 8.0,
-      "status": "backlog",
+      "spec_path": "specs/epics/e81-configurable-project-runtime/epic.yaml",
+      "status": "done",
       "links": [
+        {
+          "file": "scripts/project-survey.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
+        {
+          "file": "scripts/lib/project-vcs.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
+        {
+          "file": "scripts/test-project-vcs.sh",
+          "line": 2,
+          "confidence": "high",
+          "method": "explicit_tag"
+        },
         {
           "file": "specs/epics/e81-configurable-project-runtime/epic.yaml",
           "line": 55,
@@ -24276,7 +24734,7 @@
           "method": "task_reference"
         }
       ],
-      "link_count": 4
+      "link_count": 7
     }
   ],
   "summary": {
@@ -24545,12 +25003,15 @@
       "e80s02",
       "e80s03",
       "e80s04",
-      "e80s05"
+      "e80s05",
+      "e81s01",
+      "e81s02",
+      "e81s03"
     ],
-    "stale_count": 115,
+    "stale_count": 118,
     "oracle_stats": {
-      "high": 1505,
-      "medium": 2204,
+      "high": 1511,
+      "medium": 2253,
       "low": 81
     }
   }

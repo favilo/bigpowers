@@ -1,7 +1,7 @@
 # story: e81s01 e81s02 e81s03
 id: e81
 title: Configurable project runtime
-status: planned
+status: done
 wsjf: 8.0
 bcps: 12
 mode: capsule
@@ -40,7 +40,7 @@ stories:
       - "story: e81s02"
   - id: e81s03
     title: Native Jujutsu lifecycle state
-    status: planned
+    status: done
     bcps: 5
     risk: P0
     files:

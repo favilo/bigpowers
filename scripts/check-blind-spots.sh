@@ -10,16 +10,28 @@
 # Severities: HIGH / MEDIUM / LOW. Exit 1 on HIGH findings.
 
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/python-env.sh"
+source "$SCRIPT_DIR/lib/project-runtime.sh"
+source "$SCRIPT_DIR/lib/skill-common.sh"
 resolve_repo_root
 
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+PROJECT_ROOT="$(cd "$PROJECT_ROOT" 2>/dev/null && pwd)" || {
+  echo "check-blind-spots.sh: project root not found: ${BIGPOWERS_PROJECT_ROOT:-$PWD}" >&2
+  exit 1
+}
+SPECS_ROOT="$(bp_specs_path "$PROJECT_ROOT" "")" || exit 1
+BLIND_SPOTS_JSON="$(bp_specs_path "$PROJECT_ROOT" blind-spots.json)"
+EXEC_STATUS="$(bp_specs_path "$PROJECT_ROOT" execution-status.yaml)"
+MATRIX_JSON="$(bp_specs_path "$PROJECT_ROOT" traceability-matrix.json)"
+VERIFICATIONS_DIR="$(bp_specs_path "$PROJECT_ROOT" verifications)"
+EPICS_DIR="$(bp_specs_path "$PROJECT_ROOT" epics)"
 
-BLIND_SPOTS_JSON="$REPO_ROOT/specs/blind-spots.json"
-EXEC_STATUS="$REPO_ROOT/specs/execution-status.yaml"
-MATRIX_JSON="$REPO_ROOT/specs/traceability-matrix.json"
-VERIFICATIONS_DIR="$REPO_ROOT/specs/verifications"
-EPICS_DIR="$REPO_ROOT/specs/epics"
+if [[ ! -d "$SPECS_ROOT" ]]; then
+  echo "check-blind-spots.sh: specs directory not found: $SPECS_ROOT (project: $PROJECT_ROOT)" >&2
+  exit 1
+fi
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -50,6 +62,10 @@ if [[ ! -f "$EXEC_STATUS" ]]; then
   echo "check-blind-spots.sh: execution-status.yaml: not found at $EXEC_STATUS" >&2
   exit 1
 fi
+if [[ ! -f "$MATRIX_JSON" ]]; then
+  echo "check-blind-spots.sh: traceability matrix not found at $MATRIX_JSON; run trace-stories.sh first" >&2
+  exit 1
+fi
 
-exec $PYTHON "$(dirname "${BASH_SOURCE[0]}")/lib/blind-spots.py" \
-  "$REPO_ROOT" "$BLIND_SPOTS_JSON" "$EXEC_STATUS" "$MATRIX_JSON" "$VERIFICATIONS_DIR" "$EPICS_DIR"
+exec "$PYTHON" "$SCRIPT_DIR/lib/blind-spots.py" \
+  "$PROJECT_ROOT" "$SPECS_ROOT" "$BLIND_SPOTS_JSON" "$EXEC_STATUS" "$MATRIX_JSON" "$VERIFICATIONS_DIR" "$EPICS_DIR"

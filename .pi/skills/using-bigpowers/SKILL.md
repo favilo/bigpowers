@@ -31,8 +31,10 @@ The default artifact root is `specs/`. To keep personal planning state elsewhere
 specs_dir: .specs
 ```
 
-`BIGPOWERS_SPECS_DIR` overrides the file setting. Every `specs/...` path written in a
-bigpowers skill is a logical path under the configured artifact root. For example, with
+`BIGPOWERS_SPECS_DIR` overrides the file setting. `BIGPOWERS_ROOT` identifies the
+Bigpowers installation used by project-facing scripts and defaults to `$PWD`. Every
+`specs/...` path written in a bigpowers skill is a logical path under the configured
+artifact root. For example, with
 the configuration above, `specs/state.yaml` means `.specs/state.yaml`. Resolve this
 substitution before reading, writing, or running a verification command.
 
