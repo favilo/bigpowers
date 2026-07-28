@@ -5,6 +5,8 @@
 # scenario: SC-e81s03-P0-03
 # scenario: SC-e81s03-P1-01
 # scenario: SC-e81s03-P1-02
+# scenario: SC-e81s03-P0-04
+# scenario: SC-e81s03-P0-05
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -98,3 +100,32 @@ if [[ "$jj_survey" == *"detached HEAD"* ]]; then
 fi
 
 echo "PASS project survey renders native VCS state"
+
+GUIDANCE_FILES=(
+  "$ROOT/skills/survey-context/SKILL.md"
+  "$ROOT/skills/kickoff-branch/SKILL.md"
+  "$ROOT/skills/session-state/SKILL.md"
+  "$ROOT/skills/commit-message/SKILL.md"
+  "$ROOT/skills/release-branch/SKILL.md"
+)
+for guidance_file in "${GUIDANCE_FILES[@]}"; do
+  if ! grep -q 'vcs.kind' "$guidance_file" || ! grep -q 'jj ' "$guidance_file"; then
+    echo "FAIL Jujutsu guidance — missing conditional procedure in $guidance_file" >&2
+    exit 1
+  fi
+done
+if grep -hE 'jj (new|describe|commit|squash)' "${GUIDANCE_FILES[@]}" \
+  | grep -v -- '-m ' >/dev/null; then
+  echo "FAIL Jujutsu guidance — mutating command can open an editor" >&2
+  exit 1
+fi
+
+if unsupported_output="$(bp_require_vcs_operation "$REAL_COLOCATED" land-branch 2>&1)"; then
+  echo "FAIL unsupported operation — land-branch unexpectedly allowed for Jujutsu" >&2
+  exit 1
+elif [[ "$unsupported_output" != *"not supported for VCS 'jj'"* ]]; then
+  echo "FAIL unsupported operation — actionable VCS failure missing" >&2
+  exit 1
+fi
+
+echo "PASS Jujutsu guidance is conditional, non-interactive, and fail-closed"
