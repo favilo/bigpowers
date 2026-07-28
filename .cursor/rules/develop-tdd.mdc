@@ -76,7 +76,7 @@ Show `git log -2 --oneline` **and** the script output as evidence. If the test-o
 > **Snapshot-before-transition (e45s34):** Before each RED → GREEN or GREEN → REFACTOR transition, create a checkpoint so a failed transition can be rolled back cleanly:
 
 ```bash
-bash scripts/bp-yaml-snapshot.sh specs/state.yaml   # if state changed this cycle
+cp specs/state.yaml "${TMPDIR:-/tmp}/bigpowers-state-tdd-checkpoint.yaml"   # if state changed this cycle
 git stash push -m "tdd-checkpoint-$(git rev-parse --short HEAD)-red" --keep-index 2>/dev/null || true
 ```
 
