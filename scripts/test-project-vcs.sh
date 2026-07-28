@@ -114,8 +114,8 @@ for guidance_file in "${GUIDANCE_FILES[@]}"; do
     exit 1
   fi
 done
-if grep -hE 'jj (new|describe|commit|squash)' "${GUIDANCE_FILES[@]}" \
-  | grep -v -- '-m ' >/dev/null; then
+if grep -hE '^[[:space:]]*jj (new|describe|commit|squash)' "${GUIDANCE_FILES[@]}" \
+  | grep -vE -- '-m([[:space:]]|$)' >/dev/null; then
   echo "FAIL Jujutsu guidance — mutating command can open an editor" >&2
   exit 1
 fi
