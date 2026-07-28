@@ -3,6 +3,7 @@
 # scenario: SC-e81s03-P0-01
 # scenario: SC-e81s03-P0-02
 # scenario: SC-e81s03-P0-03
+# scenario: SC-e81s03-P1-01
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -59,3 +60,19 @@ for expected in "kind=git" "branch=main" "README.md" "seed fixture"; do
 done
 
 echo "PASS Git snapshot preserves branch, status, and logs"
+
+overridden_snapshot="$(BIGPOWERS_VCS=git bp_vcs_snapshot "$REAL_COLOCATED")"
+if [[ "$overridden_snapshot" != *"kind=git"* ]]; then
+  echo "FAIL explicit Git override — requested adapter was not selected" >&2
+  exit 1
+fi
+
+if invalid_output="$(BIGPOWERS_VCS=jj bp_vcs_snapshot "$GIT_PROJECT" 2>&1)"; then
+  echo "FAIL explicit Jujutsu override — non-Jujutsu repository unexpectedly passed" >&2
+  exit 1
+elif [[ "$invalid_output" != *"initialize Jujutsu"* ]]; then
+  echo "FAIL explicit Jujutsu override — remediation hint missing" >&2
+  exit 1
+fi
+
+echo "PASS explicit VCS overrides validate the selected repository"
