@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# story: e81s01
+# story: e81s01 e81s04
 # Consumer-project integration coverage for configurable specs roots.
 set -euo pipefail
 
@@ -58,6 +58,9 @@ run_gate check-blind-spots.sh
 run_gate check-spec-drift.sh
 run_gate golden-g12-status-consistency.sh
 run_gate run-gate-trace-verify.sh
+run_gate run-gate-trace-verify.sh --self-test
+[[ -f "$PROJECT/.specs/verifications/fixtures/gate-trace-selftest/traceability-matrix.json" ]]
+[[ ! -d "$BIGPOWERS_ROOT/specs/verifications/fixtures/gate-trace-selftest" ]]
 set +e
 version_output="$(bash "$BIGPOWERS_ROOT/scripts/check-spec-version-gap.sh" --project "$PROJECT" 2>&1)"
 version_exit=$?
@@ -75,6 +78,9 @@ rm -f "$ABSOLUTE_SPECS"/{traceability-matrix.json,blind-spots.json,drift-report.
 (cd /tmp && BIGPOWERS_PROJECT_ROOT="$PROJECT" BIGPOWERS_SPECS_DIR="$ABSOLUTE_SPECS" \
   bash "$BIGPOWERS_ROOT/scripts/trace-stories.sh" --json)
 [[ -f "$ABSOLUTE_SPECS/traceability-matrix.json" ]]
+(cd /tmp && BIGPOWERS_PROJECT_ROOT="$PROJECT" BIGPOWERS_SPECS_DIR="$ABSOLUTE_SPECS" \
+  bash "$BIGPOWERS_ROOT/scripts/golden-g12-status-consistency.sh" --self-test)
+[[ -f "$ABSOLUTE_SPECS/verifications/fixtures/gate-trace-selftest/traceability-matrix.json" || -d "$ABSOLUTE_SPECS/epics" ]]
 
 if [[ -f "$PROJECT/.specs/traceability-matrix.json" && -f "$ABSOLUTE_SPECS/traceability-matrix.json" ]]; then
   echo "test-consumer-project-gates: PASS"
