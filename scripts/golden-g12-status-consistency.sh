@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# story: e51s04
+# story: e51s04 e81s04
 # golden-g12-status-consistency.sh — Planning SoT Consistency Gate (G-12)
 #
 # CONVENTIONS.md § specs/ declares specs/execution-status.yaml the sole SoT for
@@ -169,9 +169,9 @@ if [[ "$SELF_TEST" -eq 1 ]]; then
   # Copy only what check_tree reads — specs/ as a whole is ~28MB and the copy
   # would dominate the gate's runtime.
   mkdir -p "$TMP/specs"
-  cp -R "$REPO_ROOT/specs/epics" "$TMP/specs/epics"
-  cp "$REPO_ROOT/specs/execution-status.yaml" "$TMP/specs/"
-  cp "$REPO_ROOT/specs/release-plan.yaml" "$TMP/specs/"
+  cp -R "$SPECS_ROOT/epics" "$TMP/specs/epics"
+  cp "$SPECS_ROOT/execution-status.yaml" "$TMP/specs/"
+  cp "$SPECS_ROOT/release-plan.yaml" "$TMP/specs/"
 
   # Inject drift into a LIVE capsule. Archived shards are excluded from the
   # check, so mutating one would prove nothing — the gate would rightly stay

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# story: e80s01
+# story: e80s01 e81s04
 # Pre-flight runner for gate-trace skill verify.
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -15,7 +15,7 @@ TRACE_MATRIX="$(bp_specs_path "$PROJECT_ROOT" traceability-matrix.json)"
 BLIND_SPOTS="$(bp_specs_path "$PROJECT_ROOT" blind-spots.json)"
 
 self_test() {
-  local tmp="$REPO_ROOT/specs/verifications/fixtures/gate-trace-selftest"
+  local tmp="$SPECS_ROOT/verifications/fixtures/gate-trace-selftest"
   mkdir -p "$tmp"
   echo '{"stories":{},"coverage_pct":85,"oracle_stats":{"heuristic_ratio":0.2}}' > "$tmp/traceability-matrix.json"
   echo '{"gaps":[]}' > "$tmp/blind-spots.json"

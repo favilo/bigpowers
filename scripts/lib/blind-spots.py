@@ -67,7 +67,7 @@ if matrix_data:
             file_story_counts.setdefault(f, set()).add(sid)
 
 CODE_EXTENSIONS = {".sh", ".py", ".js", ".ts", ".jsx", ".tsx", ".md", ".yaml", ".yml", ".cjs", ".mjs", ".json"}
-SKIP_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", "specs", "dist", "build", "__pycache__", ".bigpowers"}
+SKIP_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", "specs", "dist", "build", "__pycache__", ".bigpowers", SPECS_ROOT.name}
 
 def is_code_file(p: Path) -> bool:
     return p.suffix in CODE_EXTENSIONS and not any(s in p.parts for s in SKIP_DIRS)
@@ -117,7 +117,7 @@ for sid, sstatus in dev_status.items():
                 "check": "verify-gap",
                 "story_id": sid,
                 "severity": "HIGH",
-                "description": f"Story {sid} is marked done but no verification evidence exists at specs/verifications/{sid}-verify.yaml",
+                "description": f"Story {sid} is marked done but no verification evidence exists at {VERIFICATIONS_DIR / f'{sid}-verify.yaml'}",
                 "remediation": f"Run verify-work for {sid} or create the verification evidence file"
             })
 

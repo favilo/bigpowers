@@ -110,7 +110,11 @@ for line in result.stdout.splitlines():
 
 # --- 4. Oracle tiers
 EXCLUDE_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", ".venv", "venv", ".tox", "__pycache__", "site-packages", ".mypy_cache", ".pytest_cache", ".ruff_cache"}
-EXCLUDE_PREFIXES = ("specs/archive/", "specs/codebase-wiki/")
+SPECS_REL = os.path.relpath(SPECS_ROOT, ROOT).replace(os.sep, "/")
+EXCLUDE_PREFIXES = (
+    f"{SPECS_REL}/archive/",
+    f"{SPECS_REL}/codebase-wiki/",
+)
 
 def _is_excluded(rel_path: str) -> bool:
     """True if path is in an excluded dir or under an excluded prefix."""
