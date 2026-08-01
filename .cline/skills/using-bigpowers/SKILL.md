@@ -115,7 +115,5 @@ Start the HTTP dashboard with `visual-dashboard` → `GET /api/status?projectDir
 - **The full catalog is auto-generated.** See `SKILL-INDEX.md`; find skills with `search-skills`.
 
 ## After this
-
 Call `survey-context` to read your project's current state and get a personalized recommendation for where to go next.
-
 <!-- story: e03s02 e81s02 -->
