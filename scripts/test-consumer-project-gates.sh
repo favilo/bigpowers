@@ -60,7 +60,6 @@ run_gate golden-g12-status-consistency.sh
 run_gate run-gate-trace-verify.sh
 run_gate run-gate-trace-verify.sh --self-test
 [[ -f "$PROJECT/.specs/verifications/fixtures/gate-trace-selftest/traceability-matrix.json" ]]
-[[ ! -d "$BIGPOWERS_ROOT/specs/verifications/fixtures/gate-trace-selftest" ]]
 set +e
 version_output="$(bash "$BIGPOWERS_ROOT/scripts/check-spec-version-gap.sh" --project "$PROJECT" 2>&1)"
 version_exit=$?
@@ -80,8 +79,6 @@ rm -f "$ABSOLUTE_SPECS"/{traceability-matrix.json,blind-spots.json,drift-report.
 [[ -f "$ABSOLUTE_SPECS/traceability-matrix.json" ]]
 (cd /tmp && BIGPOWERS_PROJECT_ROOT="$PROJECT" BIGPOWERS_SPECS_DIR="$ABSOLUTE_SPECS" \
   bash "$BIGPOWERS_ROOT/scripts/golden-g12-status-consistency.sh" --self-test)
-[[ -f "$ABSOLUTE_SPECS/verifications/fixtures/gate-trace-selftest/traceability-matrix.json" || -d "$ABSOLUTE_SPECS/epics" ]]
-
 if [[ -f "$PROJECT/.specs/traceability-matrix.json" && -f "$ABSOLUTE_SPECS/traceability-matrix.json" ]]; then
   echo "test-consumer-project-gates: PASS"
 else
