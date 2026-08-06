@@ -70,7 +70,7 @@ summary:
   combined_verdict: "$OVERALL"
 YAML_EOF
 
-  OKF_DIR="specs/verifications/reports"
+  OKF_DIR="$VERIFICATION_REPORT_DIR"
   mkdir -p "$OKF_DIR"
   OKF_FILE="$OKF_DIR/GOLDEN-${TODAY}.okf.md"
   THRESHOLD=100
@@ -108,7 +108,7 @@ golden_write_baseline_sizes() {
   echo "" >> "$REPORT_FILE"
   echo "# Skill byte counts (baseline for e31s04 size budget)" >> "$REPORT_FILE"
   echo "skill_sizes:" >> "$REPORT_FILE"
-  for skill_md in skills/*/SKILL.md; do
+  for skill_md in "$BIGPOWERS_ROOT"/skills/*/SKILL.md; do
     skill_name=$(basename "$(dirname "$skill_md")")
     skill_bytes=$(wc -c < "$skill_md" | tr -d ' ')
     echo "  $skill_name: $skill_bytes" >> "$REPORT_FILE"
@@ -127,7 +127,7 @@ golden_check_size_budget() {
 
   echo ""
   echo "Size Budget Check (+${WARN_THRESHOLD}% warn, +${FAIL_THRESHOLD}% fail):"
-  for skill_md in skills/*/SKILL.md; do
+  for skill_md in "$BIGPOWERS_ROOT"/skills/*/SKILL.md; do
     skill_name=$(basename "$(dirname "$skill_md")")
     current_bytes=$(wc -c < "$skill_md" | tr -d ' ')
     baseline_bytes=$(grep "^  $skill_name:" "$BASELINE_FILE" 2>/dev/null | awk '{print $2}')
