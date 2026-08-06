@@ -58,6 +58,9 @@ run_gate check-blind-spots.sh
 run_gate check-spec-drift.sh
 run_gate golden-g12-status-consistency.sh
 run_gate run-gate-trace-verify.sh
+DRY_RUN_OUTPUT="$(cd /tmp && BIGPOWERS_PROJECT_ROOT="$PROJECT" BIGPOWERS_ROOT="$BIGPOWERS_ROOT" bash "$BIGPOWERS_ROOT/scripts/run-verification-gates.sh" --dry-run)"
+[[ "$DRY_RUN_OUTPUT" == *"$PROJECT/.specs/benchmarks/reports"* ]]
+[[ "$DRY_RUN_OUTPUT" == *"$PROJECT/.specs/verifications/reports"* ]]
 run_gate run-gate-trace-verify.sh --self-test
 [[ -f "$PROJECT/.specs/verifications/fixtures/gate-trace-selftest/traceability-matrix.json" ]]
 set +e
