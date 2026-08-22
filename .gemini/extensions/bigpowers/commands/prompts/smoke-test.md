@@ -3,6 +3,8 @@ name: smoke-test
 description: "Post-deploy health-check against a live URL. Validates HTTP status, response content, and critical endpoints. Runnable standalone OR as the final step of the deploy skill."
 ---
 
+# story: e80s02
+
 # Smoke Test
 
 > **HARD GATE** — Do NOT run smoke-test against a URL that hasn't been deployed yet. Always run `deploy` first, then `smoke-test`.

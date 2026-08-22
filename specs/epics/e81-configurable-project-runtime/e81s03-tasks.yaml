@@ -1,0 +1,64 @@
+story_id: e81s03
+title: Native Jujutsu lifecycle state
+spec: e81s03-jujutsu-lifecycle.md
+status: passing
+bcps: 5
+tasks:
+  - id: 1
+    description: Add failing Git, Jujutsu, and colocated VCS fixtures
+    scenarios:
+      - SC-e81s03-P0-01
+      - SC-e81s03-P0-02
+      - SC-e81s03-P0-03
+      - SC-e81s03-P0-04
+      - SC-e81s03-P0-05
+      - SC-e81s03-P1-01
+      - SC-e81s03-P1-02
+    verify: bash scripts/test-project-vcs.sh
+    risk: P0
+    status: passing
+    allure:
+      severity: critical
+      categories:
+        - vcs
+        - integration
+  - id: 2
+    description: Implement read-only VCS discovery and state adapter
+    scenarios:
+      - SC-e81s03-P0-01
+      - SC-e81s03-P0-02
+      - SC-e81s03-P0-03
+      - SC-e81s03-P1-01
+    verify: bash scripts/test-project-vcs.sh
+    risk: P0
+    status: passing
+    allure:
+      severity: critical
+      categories:
+        - vcs
+        - compatibility
+  - id: 3
+    description: Route project survey through the VCS adapter
+    scenarios:
+      - SC-e81s03-P1-02
+    verify: bash scripts/test-project-vcs.sh
+    risk: P1
+    status: passing
+    allure:
+      severity: high
+      categories:
+        - vcs
+        - survey
+  - id: 4
+    description: Add conditional Jujutsu lifecycle guidance and explicit Git-only failures
+    scenarios:
+      - SC-e81s03-P0-04
+      - SC-e81s03-P0-05
+    verify: bash scripts/sync-skills.sh --distribute-only && bash scripts/test-project-vcs.sh
+    risk: P0
+    status: passing
+    allure:
+      severity: critical
+      categories:
+        - vcs
+        - generated-artifacts

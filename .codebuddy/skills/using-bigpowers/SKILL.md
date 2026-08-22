@@ -7,11 +7,9 @@ description: "One-time bootstrap that introduces the bigpowers skills system, th
 # Using bigpowers
 > **HARD GATE** — **HARD GATE** — This skill is the entry point. Do NOT skip it when onboarding new users or starting a new session. It establishes the bigpowers methodology, lifecycle phases, and conventions.
 
-
 Welcome to **bigpowers** — a lifecycle of agent skills for production-ready, TDD-driven software by solo developers. The live catalog and its count are generated in [`SKILL-INDEX.md`](../../SKILL-INDEX.md); never hardcode the number here.
 
 ## Install
-
 ```bash
 npx bigpowers setup           # one-shot setup
 npm install -g bigpowers       # global install
@@ -23,8 +21,22 @@ From source: `git clone` → `bash scripts/install.sh`. Package: [bigpowers on n
 **Reach tools:** **Cline** — native AGENTS.md reader (no extension). **Aider** — opt-in `.aider.conf.yml` with `read: AGENTS.md` ([Aider-AI/aider](https://github.com/Aider-AI/aider)). **Codex CLI** — optional `.codex/config.toml` via seed-conventions; global `~/.codex/AGENTS.md` from install.sh.
 
 ## What bigpowers is
+A curated set of skills organized around the PMBOK developer lifecycle. Each skill does one thing. Skills reference each other by name only — low coupling, high cohesion. All written output goes to the configured artifact root at your project root.
 
-A curated set of skills organized around the PMBOK developer lifecycle. Each skill does one thing. Skills reference each other by name only — low coupling, high cohesion. All written output goes to `specs/` at your project root.
+## Project runtime configuration
+The default artifact root is `specs/`. To keep personal planning state elsewhere, create
+`.bigpowers/config.yaml`:
+
+```yaml
+specs_dir: .specs
+```
+
+`BIGPOWERS_SPECS_DIR` overrides the file setting. `BIGPOWERS_ROOT` identifies the
+Bigpowers installation used by project-facing scripts and defaults to `$PWD`. Every
+`specs/...` path written in a bigpowers skill is a logical path under the configured
+artifact root. For example, with
+the configuration above, `specs/state.yaml` means `.specs/state.yaml`. Resolve this
+substitution before reading, writing, or running a verification command.
 
 ## The lifecycle at a glance
 
@@ -96,16 +108,12 @@ Start the HTTP dashboard with `visual-dashboard` → `GET /api/status?projectDir
 
 ## Key conventions
 
-- **specs/ is your memory.** All domain docs, plans, and investigation outputs go in `specs/` at your project root.
+- **The configured artifact root is your memory.** It defaults to `specs/`; all domain docs, plans, and investigation outputs go there.
 - **Integrate:** team default is `gh pr` (team-pr); solo profile uses `land-branch.sh`. Never create GitHub issues from skills — use local Markdown files instead.
 - **One skill, one thing.** If you're unsure which skill to call, call `survey-context` — it reads your current state and recommends the next step.
 - **verify: every step.** Every epic task must have `verify: <runnable command>`. Evidence over claims.
 - **The full catalog is auto-generated.** See `SKILL-INDEX.md`; find skills with `search-skills`.
 
 ## After this
-
 Call `survey-context` to read your project's current state and get a personalized recommendation for where to go next.
-
-
-
-<!-- story: e03s02 -->
+<!-- story: e03s02 e81s02 -->

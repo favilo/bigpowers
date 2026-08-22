@@ -6,6 +6,7 @@ if [ -n "${GOLDEN_SUITE_RUN_LOADED:-}" ]; then return 0; fi
 GOLDEN_SUITE_RUN_LOADED=1
 
 _LIB="$(dirname "${BASH_SOURCE[0]}")"
+source "$_LIB/project-runtime.sh"
 source "$_LIB/golden-suite-gates.sh"
 source "$_LIB/golden-suite-agent.sh"
 source "$_LIB/golden-suite-report.sh"
@@ -13,9 +14,18 @@ source "$_LIB/golden-suite-report.sh"
 golden_suite_main() {
   local arg gate name cmd optional
 
-  REPORT_DIR="specs/benchmarks/reports"
+  BIGPOWERS_ROOT="${BIGPOWERS_ROOT:-$(cd "$_LIB/../.." && pwd)}"
+  PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+  PROJECT_ROOT="$(cd "$PROJECT_ROOT" 2>/dev/null && pwd)" || {
+    echo "golden-suite: project root not found: ${BIGPOWERS_PROJECT_ROOT:-$PWD}" >&2
+    return 1
+  }
+  SPECS_ROOT="$(bp_specs_path "$PROJECT_ROOT" "")" || return 1
+  REPORT_DIR="$SPECS_ROOT/benchmarks/reports"
   BASELINE_FILE="$REPORT_DIR/BASELINE-GOLDEN.yaml"
-  GOLDEN_DIR="specs/benchmarks/golden"
+  GOLDEN_DIR="$BIGPOWERS_ROOT/specs/benchmarks/golden"
+  VERIFICATION_REPORT_DIR="$SPECS_ROOT/verifications/reports"
+  export BIGPOWERS_ROOT BIGPOWERS_PROJECT_ROOT="$PROJECT_ROOT"
   DRY_RUN=false BASELINE_MODE=false CHECK_SIZE=false AGENT_MODE=false
 
   for arg in "$@"; do
@@ -61,10 +71,12 @@ golden_suite_main() {
       echo "  - $name: $cmd"
     done
     echo "Report: $REPORT_DIR/GOLDEN-YYYY-MM-DD.yaml"
+    echo "Verification report: $VERIFICATION_REPORT_DIR/GOLDEN-YYYY-MM-DD.okf.md"
     echo "OK (dry run)"
     exit 0
   fi
 
+  cd "$BIGPOWERS_ROOT"
   mkdir -p "$REPORT_DIR"
   TODAY=$(date +%Y-%m-%d)
   TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")

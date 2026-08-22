@@ -4,6 +4,10 @@ model: sonnet
 description: "Create new bigpowers skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill for the bigpowers lifecycle."
 ---
 
+# story: e45s02
+<!-- story: e45s12 -->
+<!-- story: e79s02 -->
+
 # Craft Skill
 
 > **HARD GATE** — Do NOT name a skill without a two-word verb-noun pair. Do NOT merge a new skill without running `sync-skills.sh`. Generated `.cursor/rules/` and `.gemini/` artifacts MUST match the source SKILL.md.

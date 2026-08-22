@@ -1,0 +1,55 @@
+# story: e81s01 e81s02 e81s03
+id: e81
+title: Configurable project runtime
+status: done
+wsjf: 8.0
+bcps: 12
+mode: capsule
+wsjf_rationale: >
+  Removes a hard collision with existing specs directories and enables Jujutsu users
+  to run the lifecycle without Git state being misreported. Shared runtime contract,
+  high reach, and strong risk reduction justify immediate implementation.
+source: "Personal fork requirement: private .specs cockpit and native Jujutsu support."
+stories:
+  - id: e81s01
+    title: Project runtime configuration resolver
+    status: done
+    bcps: 3
+    risk: P1
+    files:
+      - scripts/lib/project-runtime.sh
+      - scripts/test-project-runtime.sh
+    verify: bash scripts/test-project-runtime.sh
+    tags:
+      - "story: e81s01"
+  - id: e81s02
+    title: Configurable artifact root across project-facing surfaces
+    status: done
+    bcps: 4
+    risk: P1
+    files:
+      - scripts/project-survey.sh
+      - scripts/bp-timing.sh
+      - scripts/validate-specs-yaml.sh
+      - scripts/migrate-version.sh
+      - dashboard/
+      - bigpowers-mcp/
+      - skills/
+    verify: bash scripts/test-configurable-specs-root.sh
+    tags:
+      - "story: e81s02"
+  - id: e81s03
+    title: Native Jujutsu lifecycle state
+    status: done
+    bcps: 5
+    risk: P0
+    files:
+      - scripts/lib/project-vcs.sh
+      - scripts/project-survey.sh
+      - skills/survey-context/SKILL.md
+      - skills/kickoff-branch/SKILL.md
+      - skills/release-branch/SKILL.md
+      - skills/session-state/SKILL.md
+    verify: bash scripts/test-project-vcs.sh
+    tags:
+      - "story: e81s03"

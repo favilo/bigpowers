@@ -5,6 +5,8 @@ description: "Assert data shape consistency across system boundaries — live AP
 disable-model-invocation: true
 ---
 
+# story: e80s02
+
 # Validate Contracts
 
 > **HARD GATE** — Do NOT deploy or migrate data without running `validate-contracts` first. Silent data divergence between system boundaries causes the hardest-to-debug production bugs.

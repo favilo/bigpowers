@@ -3,6 +3,8 @@ name: validate-contracts
 description: "Assert data shape consistency across system boundaries — live API responses against JSON Schema, key-set comparison across layers, data shape validation for migrations and exports. Catches silent data corruption before deploy."
 ---
 
+# story: e80s02
+
 # Validate Contracts
 
 > **HARD GATE** — Do NOT deploy or migrate data without running `validate-contracts` first. Silent data divergence between system boundaries causes the hardest-to-debug production bugs.

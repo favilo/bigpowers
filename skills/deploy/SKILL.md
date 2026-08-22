@@ -1,10 +1,11 @@
-<!-- story: e45s15 -->
 ---
 name: deploy
 description: "Build → verify artifact → deploy → wait → smoke deployment pipeline. Platform-agnostic (MCP or CLI), with configurable timeout, retry with exponential backoff, and integrated health-check. The deploy half of CI/CD: run after build to push to production."
 model: sonnet
 effort: standard
 ---
+
+<!-- story: e45s15 -->
 
 # Deploy
 

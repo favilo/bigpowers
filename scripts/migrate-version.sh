@@ -2,9 +2,12 @@
 # story: e44s03 e44s04
 # migrate-version.sh — one-shot ordered migration engine with triple safety net.
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/lib/python-env.sh"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/lib/project-runtime.sh"
+
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 BIGPOWERS_ROOT="$REPO_ROOT"
 YAML_TOOLS="$REPO_ROOT/scripts/yaml-tools.py"
@@ -47,7 +50,7 @@ done
 
 if [ -n "$PROJECT_DIR" ]; then
   REPO_ROOT="$PROJECT_DIR"
-  SPECS_DIR="$REPO_ROOT/specs"
+  SPECS_DIR="$(bp_specs_path "$REPO_ROOT" "")"
   BACKUP_DIR="$SPECS_DIR/.pre-upgrade-backup"
 fi
 

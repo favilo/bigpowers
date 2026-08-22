@@ -109,6 +109,15 @@ done_epics_summary:
   - e78
   - e79
 epics:
+- id: e81
+  title: Configurable project runtime
+  wsjf: 8.0
+  bcps: 12
+  capsule_dir: epics/e81-configurable-project-runtime
+  mode: capsule
+  status: planned
+  wsjf_rationale: Custom artifact roots and Jujutsu support unblock the lifecycle in existing repositories.
+  source: Personal fork requirement
 - id: e80
   title: Verify arc hardening (#97 +
   wsjf: 7.5

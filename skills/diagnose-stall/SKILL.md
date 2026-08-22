@@ -1,10 +1,11 @@
-# story: e45s38
 ---
 name: diagnose-stall
 model: haiku
 effort: light
 description: Diagnose why agent orchestration stopped producing progress — silent stalls in /loop, dispatch-agents, or execute-plan. Use when work appears hung, no output for several minutes, or a subagent never returned.
 ---
+
+# story: e45s38
 
 # Diagnose Stall
 

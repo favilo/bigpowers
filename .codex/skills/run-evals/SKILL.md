@@ -4,6 +4,8 @@ model: sonnet
 description: "Eval-Driven Development — define capability and regression evals before building; code graders use verify commands, model graders use explicit rubrics; log pass@k. Use before develop-tdd on new features, or when measuring agent capability over runs."
 ---
 
+# story: e45s37
+
 # Run Evals
 
 > **HARD GATE** — Define evals before implementation. Code graders = runnable `verify:` commands; model graders = explicit rubric with pass/fail criteria.

@@ -6,8 +6,9 @@ Reads execution-status.yaml + traceability-matrix.json, runs 7 structural
 quality checks, and emits specs/blind-spots.json.
 
 Usage: called by scripts/check-blind-spots.sh with positional args:
-  python3 scripts/lib/blind-spots.py <repo_root> <blind_spots_json>
-      <exec_status_yaml> <matrix_json> <verifications_dir> <epics_dir>
+  python3 scripts/lib/blind-spots.py <project_root> <specs_root>
+      <blind_spots_json> <exec_status_yaml> <matrix_json>
+      <verifications_dir> <epics_dir>
 """
 
 from __future__ import annotations
@@ -17,11 +18,12 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 ROOT = Path(sys.argv[1])
-BLIND_SPOTS_JSON = Path(sys.argv[2])
-EXEC_STATUS = Path(sys.argv[3])
-MATRIX_JSON = Path(sys.argv[4])
-VERIFICATIONS_DIR = Path(sys.argv[5])
-EPICS_DIR = Path(sys.argv[6])
+SPECS_ROOT = Path(sys.argv[2])
+BLIND_SPOTS_JSON = Path(sys.argv[3])
+EXEC_STATUS = Path(sys.argv[4])
+MATRIX_JSON = Path(sys.argv[5])
+VERIFICATIONS_DIR = Path(sys.argv[6])
+EPICS_DIR = Path(sys.argv[7])
 
 findings: list[dict] = []
 
@@ -65,7 +67,7 @@ if matrix_data:
             file_story_counts.setdefault(f, set()).add(sid)
 
 CODE_EXTENSIONS = {".sh", ".py", ".js", ".ts", ".jsx", ".tsx", ".md", ".yaml", ".yml", ".cjs", ".mjs", ".json"}
-SKIP_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", "specs", "dist", "build", "__pycache__", ".bigpowers"}
+SKIP_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", "specs", "dist", "build", "__pycache__", ".bigpowers", SPECS_ROOT.name}
 
 def is_code_file(p: Path) -> bool:
     return p.suffix in CODE_EXTENSIONS and not any(s in p.parts for s in SKIP_DIRS)
@@ -115,7 +117,7 @@ for sid, sstatus in dev_status.items():
                 "check": "verify-gap",
                 "story_id": sid,
                 "severity": "HIGH",
-                "description": f"Story {sid} is marked done but no verification evidence exists at specs/verifications/{sid}-verify.yaml",
+                "description": f"Story {sid} is marked done but no verification evidence exists at {VERIFICATIONS_DIR / f'{sid}-verify.yaml'}",
                 "remediation": f"Run verify-work for {sid} or create the verification evidence file"
             })
 
@@ -197,7 +199,7 @@ for sid in sorted(dev_status.keys()):
                 })
 
 # Check G: sc-gap
-TECH_ARCH_DIR = ROOT / "specs" / "tech-architecture"
+TECH_ARCH_DIR = SPECS_ROOT / "tech-architecture"
 if EPICS_DIR.exists():
     for epic_dir in sorted(EPICS_DIR.iterdir()):
         if not epic_dir.is_dir() or epic_dir.name == "archive": continue

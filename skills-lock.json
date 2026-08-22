@@ -13,7 +13,7 @@
     },
     "audit-code": {
       "description": "Self-review checklist for the coding agent to run before dispatching a reviewer. Checks CONVENTIONS.md compliance, Boy Scout Rule, test coverage, types, and SOLID. Produces a pass/fail checklist. Use before request-review, before committing, or when user asks for a code quality check.",
-      "sha256": "b0342883680fee6c",
+      "sha256": "d53f601a4b1ee165",
       "path": "skills/audit-codeSKILL.md"
     },
     "audit-plan": {
@@ -33,7 +33,7 @@
     },
     "commit-message": {
       "description": "Reviews working-tree changes, then drafts a Conventional Commits title/body and states the semantic-release version bump a single such commit would imply. Also notes which defensive-code categories were touched. Use when the user wants to commit recent work, prepare a Conventional Commits message, or asks for semantic-release / semver-consistent messaging before git commit.",
-      "sha256": "1ed4ef65d813a84d",
+      "sha256": "138460434604ad3b",
       "path": "skills/commit-messageSKILL.md"
     },
     "compose-workflow": {
@@ -48,12 +48,12 @@
     },
     "craft-skill": {
       "description": "Create new bigpowers skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill for the bigpowers lifecycle.",
-      "sha256": "f3b08c24979f1857",
+      "sha256": "d70b55eb19f2baed",
       "path": "skills/craft-skillSKILL.md"
     },
     "deepen-architecture": {
       "description": "Find deepening opportunities in a codebase, informed by the domain language in specs/tech-architecture/tech-stack.md and the decisions in specs/adr/. Use when the user wants to improve architecture, find refactoring opportunities, consolidate tightly-coupled modules, or make a codebase more testable and AI-navigable.",
-      "sha256": "da2760c0cb49a3e4",
+      "sha256": "3c2ef4121c9ecc03",
       "path": "skills/deepen-architectureSKILL.md"
     },
     "define-language": {
@@ -73,7 +73,7 @@
     },
     "deploy": {
       "description": "\"Build → verify artifact → deploy → wait → smoke deployment pipeline. Platform-agnostic (MCP or CLI), with configurable timeout, retry with exponential backoff, and integrated health-check. The deploy half of CI/CD: run after build to push to production.\"",
-      "sha256": "ddfcbfbfc464c620",
+      "sha256": "ec4c9aecb4ea3256",
       "path": "skills/deploySKILL.md"
     },
     "design-interface": {
@@ -83,7 +83,7 @@
     },
     "develop-tdd": {
       "description": "Test-driven development with red-green-refactor loop using vertical slices. Use for features (epic tasks) or bugs (specs/bugs/BUG-*.md).",
-      "sha256": "8b3934e2291b863d",
+      "sha256": "fa3f3d2d0b9f5694",
       "path": "skills/develop-tddSKILL.md"
     },
     "diagnose-root": {
@@ -93,7 +93,7 @@
     },
     "diagnose-stall": {
       "description": "Diagnose why agent orchestration stopped producing progress — silent stalls in /loop, dispatch-agents, or execute-plan. Use when work appears hung, no output for several minutes, or a subagent never returned.",
-      "sha256": "c0fe87349399c112",
+      "sha256": "536c0dd816d4e3fe",
       "path": "skills/diagnose-stallSKILL.md"
     },
     "dispatch-agents": {
@@ -113,7 +113,7 @@
     },
     "enforce-first": {
       "description": "Apply the F.I.R.S.T test quality rubric (per CONVENTIONS.md §Tests) to a test suite or individual tests. Use when develop-tdd is writing tests, when test quality needs to be checked, or when user mentions F.I.R.S.T or \"test quality\".",
-      "sha256": "1ec1183ee6377917",
+      "sha256": "584ef701420f3e75",
       "path": "skills/enforce-firstSKILL.md"
     },
     "evolve-skill": {
@@ -138,12 +138,12 @@
     },
     "fix-bug": {
       "description": "Bug fix orchestrator — active_flow fix_bug; reads specs/bugs/BUG-*.md; chains investigate-bug, develop-tdd, validate-fix. Use when user reports a defect.",
-      "sha256": "8e9e5922211b7e3b",
+      "sha256": "3a67c015e986b45e",
       "path": "skills/fix-bugSKILL.md"
     },
     "gate-trace": {
       "description": "\"Deterministic traceability quality gate — reads coverage matrix + blind-spot data, applies decision rules with oracle confidence downgrade, emits PASS/CONCERNS/FAIL/WAIVED verdict. Use before release-branch to gate merges on traceability.\"",
-      "sha256": "87e0c49ff90ec34c",
+      "sha256": "c2d7b8ab785b83be",
       "path": "skills/gate-traceSKILL.md"
     },
     "generate-allure-report": {
@@ -187,8 +187,8 @@
       "path": "skills/investigate-bugSKILL.md"
     },
     "kickoff-branch": {
-      "description": "Create a git worktree and feature branch, then verify a clean test baseline before any code is written. Use when starting a new feature or task, when user wants to work in isolation from main, or mentions \"start a branch\" or \"new worktree\".",
-      "sha256": "d94be12d4b29895b",
+      "description": "Create an isolated Git worktree/branch or Jujutsu workspace, then verify a clean test baseline before code. Use when starting a feature or task.",
+      "sha256": "29861812ecb6926d",
       "path": "skills/kickoff-branchSKILL.md"
     },
     "maintain-wiki": {
@@ -238,7 +238,7 @@
     },
     "plan-work": {
       "description": "\"PLANNING SPINE STEP 3 of 3 — Plan the work: write detailed implementation tasks into the active epic capsule (specs/epics/eNN-slug/). Produces countable-story-format .md specs and runnable -tasks.yaml files. Use after slice-tasks (step 2). Not a substitute for scope-work (step 1) or slice-tasks (step 2).\"",
-      "sha256": "32c2bcaf16cb4ad2",
+      "sha256": "4b772459fa31a75e",
       "path": "skills/plan-workSKILL.md"
     },
     "publish-package": {
@@ -248,17 +248,17 @@
     },
     "quick-fix": {
       "description": "\"Streamlined fast-path for trivial data-only fixes — no TDD, no branching ceremony. Collapses 6 skills into 2 for changes that are purely data with no logic risk. Aborts with fallback to investigate-bug if guardrails trigger.\"",
-      "sha256": "6a1b70cb1530c428",
+      "sha256": "c7159e2b96d28f25",
       "path": "skills/quick-fixSKILL.md"
     },
     "release-branch": {
       "description": "Make the merge/PR/keep/discard decision for a feature branch, verify coverage gates, create the PR with gh, and clean up the worktree. Use when a feature is done and ready to ship, or when user says \"release\", \"merge\", or \"open a PR\".",
-      "sha256": "4479807337f84915",
+      "sha256": "be878ba7836dd6b3",
       "path": "skills/release-branchSKILL.md"
     },
     "request-review": {
       "description": "Dispatch a fresh reviewer agent with a clean context to critique the code after audit-code passes. The reviewer has no shared state with the coding agent and gives a genuine second opinion. Use after audit-code passes, before committing, or when user wants an independent code review.",
-      "sha256": "f362641a467c3000",
+      "sha256": "bacf037567fc1438",
       "path": "skills/request-reviewSKILL.md"
     },
     "research-first": {
@@ -283,7 +283,7 @@
     },
     "run-evals": {
       "description": "Eval-Driven Development — define capability and regression evals before building; code graders use verify commands, model graders use explicit rubrics; log pass@k. Use before develop-tdd on new features, or when measuring agent capability over runs.",
-      "sha256": "d20ba2bece1b1c72",
+      "sha256": "268301de715c37a7",
       "path": "skills/run-evalsSKILL.md"
     },
     "run-planning": {
@@ -313,7 +313,7 @@
     },
     "session-state": {
       "description": "Track implementation decisions and progress in specs/state.yaml to prevent context rot. Use at the start of a session to load context, and whenever a significant decision is made or a milestone is reached.",
-      "sha256": "943075be867cd50e",
+      "sha256": "f0dbe7fc304e6a7c",
       "path": "skills/session-stateSKILL.md"
     },
     "setup-environment": {
@@ -338,7 +338,7 @@
     },
     "smoke-test": {
       "description": "\"Post-deploy health-check against a live URL. Validates HTTP status, response content, and critical endpoints. Runnable standalone OR as the final step of the deploy skill.\"",
-      "sha256": "050170d66ada581e",
+      "sha256": "8ac93100c4b9efb1",
       "path": "skills/smoke-testSKILL.md"
     },
     "spike-prototype": {
@@ -353,7 +353,7 @@
     },
     "survey-context": {
       "description": "Per-task context bootstrap — reads existing specs/ and tech-architecture docs to map the current lifecycle phase and suggest the next skill. Use at the start of any task, when returning after a break, or when unsure what to do next. For deriving a tech-stack doc from scratch, use map-codebase first.",
-      "sha256": "ef837ae3e822e9a3",
+      "sha256": "38cf8fee401bbf0b",
       "path": "skills/survey-contextSKILL.md"
     },
     "terse-mode": {
@@ -368,17 +368,17 @@
     },
     "using-bigpowers": {
       "description": "One-time bootstrap that introduces the bigpowers skills system, the PMBOK lifecycle arc, and tells you which skill to call first for your situation. Use when starting with bigpowers for the first time, when user asks \"where do I start?\", or when the skills system needs to be explained.",
-      "sha256": "a6d780440a936929",
+      "sha256": "f7b40ff307995002",
       "path": "skills/using-bigpowersSKILL.md"
     },
     "validate-contracts": {
       "description": "\"Assert data shape consistency across system boundaries — live API responses against JSON Schema, key-set comparison across layers, data shape validation for migrations and exports. Catches silent data corruption before deploy.\"",
-      "sha256": "d93c9ae2953ac457",
+      "sha256": "26d45a4cdfe98d91",
       "path": "skills/validate-contractsSKILL.md"
     },
     "validate-fix": {
       "description": "Prove a fix works before declaring done — re-run the failing test, run the full suite, typecheck, lint, and harden against recurrence. Use after implementing a bug fix, when user says \"is this fixed?\", or before closing an investigation.",
-      "sha256": "f94972af3fd48e3e",
+      "sha256": "54af6265c6849e79",
       "path": "skills/validate-fixSKILL.md"
     },
     "verify-work": {

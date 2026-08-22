@@ -1,0 +1,36 @@
+story_id: e81s02
+title: Configurable artifact root across project-facing surfaces
+spec: e81s02-configurable-artifact-root.md
+status: passing
+bcps: 4
+tasks:
+  - id: 1
+    description: Add failing non-default artifact-root integration fixtures
+    verify: bash scripts/test-configurable-specs-root.sh
+    risk: P1
+    status: passing
+    allure:
+      severity: high
+      categories:
+        - artifact-root
+        - integration
+  - id: 2
+    description: Migrate project-facing runtime entry points to the shared resolver
+    verify: bash scripts/test-configurable-specs-root.sh
+    risk: P1
+    status: passing
+    allure:
+      severity: high
+      categories:
+        - artifact-root
+        - compatibility
+  - id: 3
+    description: Render the artifact-root substitution contract into generated skills
+    verify: bash scripts/sync-skills.sh --distribute-only && rg -q 'configured artifact root' .pi/skills/using-bigpowers/SKILL.md
+    risk: P1
+    status: passing
+    allure:
+      severity: high
+      categories:
+        - artifact-root
+        - generated-artifacts

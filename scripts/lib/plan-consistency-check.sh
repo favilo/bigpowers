@@ -91,8 +91,10 @@ for tasks in "${TASKS[@]+"${TASKS[@]}"}"; do
   if ! grep -qE '^[[:space:]]*verify:' "$tasks"; then
     report CRITICAL "Story $sid tasks.yaml missing runnable verify: commands"
   else
+    # Consume the full producer stream: an early awk exit can SIGPIPE Python and,
+    # under pipefail, abort this gate before it reports findings.
     verify_cmd="$("$PYTHON_BIN" "$SCRIPT_LIB_DIR/extract-story-verify.py" "$REPO_ROOT" 2>/dev/null \
-      | awk -F'\t' -v s="$sid" '$1 == s { print $4; exit }')"
+      | awk -F'\t' -v s="$sid" '$1 == s && !found { print $4; found = 1 }')"
     if [[ -n "$verify_cmd" ]]; then
       is_executable_verify "$verify_cmd" \
         || report CRITICAL "Story $sid verify: is prose, not a runnable command: $verify_cmd"

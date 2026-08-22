@@ -1,0 +1,23 @@
+{
+  "okf_kind": "verification-report",
+  "story_id": "e81s03",
+  "verified_at": "2026-07-28T12:18:00Z",
+  "verdict": "PASS",
+  "dimensions": {
+    "performance": {
+      "status": "PASS",
+      "requirement": "Local fixture suite completes without hangs",
+      "evidence": "bash scripts/test-project-vcs.sh completed in 0.45 seconds"
+    },
+    "reliability": {
+      "status": "PASS",
+      "requirement": "Colocated repositories never derive lifecycle identity from detached Git HEAD",
+      "evidence": "SC-e81s03-P0-01 and SC-e81s03-P0-02 passed"
+    },
+    "operability": {
+      "status": "PASS",
+      "requirement": "Invalid overrides and unsupported operations fail with remediation",
+      "evidence": "SC-e81s03-P1-01 and SC-e81s03-P0-05 passed"
+    }
+  }
+}

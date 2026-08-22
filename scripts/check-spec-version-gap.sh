@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # check-spec-version-gap.sh — detect spec format gap (e44s02)
 set -euo pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/python-env.sh"
+source "$SCRIPT_DIR/lib/project-runtime.sh"
 BP_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 gap_usage() {
@@ -27,7 +28,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 PROJECT_DIR="$(cd "$PROJECT_DIR" 2>/dev/null && pwd)" || { echo "bad dir: $PROJECT_DIR" >&2; exit 4; }
-SPECS="$PROJECT_DIR/specs"
+SPECS="$(bp_specs_path "$PROJECT_DIR" "")" || exit 4
+[[ -d "$SPECS" ]] || { echo "specs directory not found: $SPECS (project: $PROJECT_DIR)" >&2; exit 2; }
+echo "check-spec-version-gap: project=$PROJECT_DIR specs=$SPECS" >&2
 
 gap_emit_json() {
   if $JSON_STDOUT; then echo "$1"; else echo "$1" >&2; fi
@@ -81,7 +84,7 @@ yaml_value_set() {
 }
 
 has_dirty_specs() {
-  [[ -d "$SPECS" ]] && git -C "$PROJECT_DIR" status --porcelain -- specs/ 2>/dev/null | grep -q .
+  [[ -d "$SPECS" ]] && git -C "$PROJECT_DIR" status --porcelain -- "$SPECS" 2>/dev/null | grep -q .
 }
 
 is_blocking_active_flow() {

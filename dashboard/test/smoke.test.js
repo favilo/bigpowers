@@ -128,5 +128,46 @@ stories:
   process.exit(1);
 }
 
-console.log(`Smoke test: PASS (${passed}/6 assertions)`);
+try {
+  // Test 7: dashboard readers honor the configured artifact root
+  const fs = require('fs');
+  const os = require('os');
+  const tempProjectRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'bigpowers-dashboard-'));
+  const tempSpecsDir = path.join(tempProjectRoot, '.specs');
+  fs.mkdirSync(path.join(tempProjectRoot, '.bigpowers'), { recursive: true });
+  fs.mkdirSync(path.join(tempSpecsDir, 'epics'), { recursive: true });
+  fs.writeFileSync(
+    path.join(tempProjectRoot, '.bigpowers', 'config.yaml'),
+    'specs_dir: .specs\nvcs: auto\n',
+    'utf8'
+  );
+  fs.writeFileSync(
+    path.join(tempSpecsDir, 'state.yaml'),
+    'active_flow: planning\nactive_epic_id: e99\n',
+    'utf8'
+  );
+  fs.writeFileSync(
+    path.join(tempSpecsDir, 'epics', 'e99.yaml'),
+    'id: e99\ntitle: Configured Root\nstories: []\n',
+    'utf8'
+  );
+
+  const configuredState = reader.readStateYaml(tempProjectRoot);
+  const configuredEpics = reader.readEpicShards(tempProjectRoot);
+  const mockBox = { content: '', setContent(c) { this.content = c; } };
+  renderFilesystem(mockBox, tempProjectRoot);
+  fs.rmSync(tempProjectRoot, { recursive: true, force: true });
+
+  assert.strictEqual(configuredState.activeFlow, 'planning');
+  assert.strictEqual(configuredEpics[0].id, 'e99');
+  assert.ok(!mockBox.content.includes('specs/ not found'));
+
+  passed++;
+  console.log('  ✓ Test 7: dashboard readers honor configured artifact root');
+} catch (err) {
+  console.error('✗ Test 7 failed:', err.message);
+  process.exit(1);
+}
+
+console.log(`Smoke test: PASS (${passed}/7 assertions)`);
 process.exit(0);

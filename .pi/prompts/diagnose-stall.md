@@ -3,6 +3,8 @@ name: diagnose-stall
 description: "Diagnose why agent orchestration stopped producing progress — silent stalls in /loop, dispatch-agents, or execute-plan. Use when work appears hung, no output for several minutes, or a subagent never returned."
 ---
 
+# story: e45s38
+
 # Diagnose Stall
 
 > **HARD GATE** — Do NOT restart work blindly. Run this diagnostic first when orchestration goes quiet without an explicit terminal state.

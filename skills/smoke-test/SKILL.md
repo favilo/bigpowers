@@ -1,4 +1,3 @@
-# story: e80s02
 ---
 name: smoke-test
 phase: verify
@@ -6,6 +5,8 @@ description: "Post-deploy health-check against a live URL. Validates HTTP status
 model: sonnet
 effort: standard
 ---
+
+# story: e80s02
 
 # Smoke Test
 

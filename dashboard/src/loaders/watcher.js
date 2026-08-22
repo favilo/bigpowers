@@ -1,6 +1,7 @@
 const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
+const { specsPath } = require('../../../scripts/lib/project-runtime');
 
 let chokidar;
 try {
@@ -26,10 +27,10 @@ function watch(projectRoot) {
 
   if (chokidar) {
     const filesToWatch = [
-      path.join(projectRoot, 'specs/state.yaml'),
-      path.join(projectRoot, 'specs/execution-status.yaml'),
-      path.join(projectRoot, 'specs/metrics/cycle-times.yaml'),
-      path.join(projectRoot, 'specs/epics')
+      specsPath(projectRoot, 'state.yaml'),
+      specsPath(projectRoot, 'execution-status.yaml'),
+      specsPath(projectRoot, 'metrics', 'cycle-times.yaml'),
+      specsPath(projectRoot, 'epics')
     ];
 
     const watcher = chokidar.watch(filesToWatch, {
@@ -52,9 +53,9 @@ function watch(projectRoot) {
   } else {
     const fileStats = {};
     const filesToWatch = [
-      path.join(projectRoot, 'specs/state.yaml'),
-      path.join(projectRoot, 'specs/execution-status.yaml'),
-      path.join(projectRoot, 'specs/metrics/cycle-times.yaml')
+      specsPath(projectRoot, 'state.yaml'),
+      specsPath(projectRoot, 'execution-status.yaml'),
+      specsPath(projectRoot, 'metrics', 'cycle-times.yaml')
     ];
 
     const pollInterval = setInterval(() => {
@@ -78,8 +79,8 @@ function watch(projectRoot) {
         }
       });
 
-      // Check specs/epics directory
-      const epicsDir = path.join(projectRoot, 'specs/epics');
+      // Check the configured epics directory.
+      const epicsDir = specsPath(projectRoot, 'epics');
       try {
         const entries = fs.readdirSync(epicsDir);
         entries.forEach((entry) => {

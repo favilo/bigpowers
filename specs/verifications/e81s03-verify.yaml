@@ -1,0 +1,68 @@
+story_id: e81s03
+verified_at: '2026-07-28T12:18:00Z'
+verifier: verify-work
+risk: P0
+phases:
+  smoke:
+    passed: true
+    command: bash scripts/test-project-vcs.sh
+    note: Temporary Git, Jujutsu, colocated, and invalid-override fixtures passed.
+  build:
+    passed: true
+    command: bash scripts/sync-skills.sh --distribute-only
+  typecheck:
+    passed: true
+    note: Not applicable to Bash and Markdown changes; specs parsing passed in Preflight.
+  lint:
+    passed: true
+    command: npm run compliance
+  tests:
+    passed: true
+    command: bash scripts/test-project-vcs.sh
+    scenarios:
+      - SC-e81s03-P0-01
+      - SC-e81s03-P0-02
+      - SC-e81s03-P0-03
+      - SC-e81s03-P0-04
+      - SC-e81s03-P0-05
+      - SC-e81s03-P1-01
+      - SC-e81s03-P1-02
+  terminal_verdict:
+    command: bash scripts/test-project-vcs.sh
+    exit_code: 0
+    captured_at: '2026-07-28T12:17:00Z'
+    note: Single contiguous run; six public-behavior checks passed in 0.45 seconds.
+  security:
+    passed: true
+    report: specs/security/REVIEW.md
+    high_findings: 0
+  blind_spots:
+    passed: true
+    high_findings: 0
+    note: Existing MEDIUM double-tag findings only; none are e81s03 blockers.
+  completeness:
+    passed: true
+    blockers: 0
+    warnings: 0
+  nfr:
+    passed: true
+    report: specs/verifications/NFR-e81s03.json
+  wiki_lint:
+    passed: true
+    skills_pages: 80
+    stale_pages: 0
+    conventions_expected: 40
+    conventions_actual: 40
+    missing_pages: 0
+    orphan_pages: 0
+    note: maintain-wiki regenerated skills concepts; heading-derived lint removed the sole stale convention page.
+  manual:
+    passed: true
+    confirmed_by: user
+    steps:
+      - step: Run the Jujutsu project survey in the colocated working copy.
+        expected: Native Jujutsu identity with no detached-HEAD warning.
+        actual: User confirmed output looks correct.
+        passed: true
+  gaps:
+    closed: true

@@ -5,8 +5,8 @@ Parses release-plan.yaml + execution-status.yaml, greps codebase for story tags,
 builds oracle-tiered coverage matrix, emits JSON + markdown + OKF wiki.
 
 Usage: called by scripts/trace-stories.sh with positional args:
-  python3 scripts/lib/trace-stories.py <repo_root> <matrix_json> <trace_md>
-      <okf_dir> <strict> <mode>
+  python3 scripts/lib/trace-stories.py <project_root> <specs_root>
+      <matrix_json> <trace_md> <okf_dir> <strict> <mode>
 
 Oracle tiers: Tier 1 explicit tag (high), Tier 2 file heuristic (medium), Tier 3 task ref (low).
 """
@@ -17,11 +17,18 @@ from datetime import datetime, timezone
 import yaml
 
 ROOT = Path(sys.argv[1])
-MATRIX_JSON = Path(sys.argv[2])
-TRACE_MD = Path(sys.argv[3])
-OKF_DIR = Path(sys.argv[4])
-STRICT = int(sys.argv[5])
-MODE = sys.argv[6]
+if len(sys.argv) == 7:  # legacy direct-engine invocation
+    SPECS_ROOT = ROOT / "specs"
+    MATRIX_JSON, TRACE_MD, OKF_DIR = map(Path, sys.argv[2:5])
+    STRICT = int(sys.argv[5])
+    MODE = sys.argv[6]
+else:
+    SPECS_ROOT = Path(sys.argv[2])
+    MATRIX_JSON = Path(sys.argv[3])
+    TRACE_MD = Path(sys.argv[4])
+    OKF_DIR = Path(sys.argv[5])
+    STRICT = int(sys.argv[6])
+    MODE = sys.argv[7]
 
 # --- 1. Parse YAML files → story inventory
 _MIN_STORY_BASELINE = 50  # floor assertion: --strict FAILs if story count drops below this
@@ -36,8 +43,8 @@ def _load_yaml(path: Path) -> dict:
         print(f"trace-stories.py: ERROR parsing {path}: {e}", file=sys.stderr)
         sys.exit(1)
 
-release = _load_yaml(ROOT / "specs" / "release-plan.yaml")
-exec_status = _load_yaml(ROOT / "specs" / "execution-status.yaml")
+release = _load_yaml(SPECS_ROOT / "release-plan.yaml")
+exec_status = _load_yaml(SPECS_ROOT / "execution-status.yaml")
 dev_status = exec_status.get("development_status", {})
 
 # --- 2. Build story inventory
@@ -52,7 +59,7 @@ for epic in epics:
     etitle = epic.get("title", ""); ewsjf = epic.get("wsjf", 0)
     capsule_dir = epic.get("capsule_dir", "")
     if capsule_dir:
-        capsule_path = ROOT / "specs" / capsule_dir / "epic.yaml"
+        capsule_path = SPECS_ROOT / capsule_dir / "epic.yaml"
         if capsule_path.exists():
             cap = _load_yaml(capsule_path)
             for s in cap.get("stories", []) or []:
@@ -61,10 +68,11 @@ for epic in epics:
                     stories[sid] = {"id": sid, "title": s.get("title", ""),
                         "epic_id": eid, "epic_title": etitle,
                         "bcp": s.get("bcp", 0), "wsjf": float(ewsjf),
-                        "description": s.get("description", "")}
+                        "description": s.get("description", ""),
+                        "spec_path": os.path.relpath(capsule_path, ROOT)}
     file_key = epic.get("file", "")
     if file_key and not capsule_dir:
-        legacy_path = ROOT / "specs" / file_key
+        legacy_path = SPECS_ROOT / file_key
         if legacy_path.exists():
             leg = _load_yaml(legacy_path)
             for s in leg.get("stories", []) or []:
@@ -73,7 +81,8 @@ for epic in epics:
                     stories[sid] = {"id": sid, "title": s.get("title", ""),
                         "epic_id": eid, "epic_title": etitle,
                         "bcp": s.get("bcp", 0), "wsjf": float(ewsjf),
-                        "description": s.get("description", "")}
+                        "description": s.get("description", ""),
+                        "spec_path": os.path.relpath(legacy_path, ROOT)}
 
 # --- 3. Grep codebase for story tags
 result = subprocess.run(
@@ -101,7 +110,11 @@ for line in result.stdout.splitlines():
 
 # --- 4. Oracle tiers
 EXCLUDE_DIRS = {".git", "node_modules", ".cursor", ".gemini", ".pi", ".venv", "venv", ".tox", "__pycache__", "site-packages", ".mypy_cache", ".pytest_cache", ".ruff_cache"}
-EXCLUDE_PREFIXES = ("specs/archive/", "specs/codebase-wiki/")
+SPECS_REL = os.path.relpath(SPECS_ROOT, ROOT).replace(os.sep, "/")
+EXCLUDE_PREFIXES = (
+    f"{SPECS_REL}/archive/",
+    f"{SPECS_REL}/codebase-wiki/",
+)
 
 def _is_excluded(rel_path: str) -> bool:
     """True if path is in an excluded dir or under an excluded prefix."""
@@ -133,7 +146,7 @@ def heuristic_match(story_title: str, file_path: str) -> bool:
 
 def find_task_references(story_id: str) -> list[dict]:
     refs = []
-    epics_dir = ROOT / "specs" / "epics"
+    epics_dir = SPECS_ROOT / "epics"
     if not epics_dir.exists(): return refs
     for task_yaml in epics_dir.rglob("*tasks.yaml"):
         try:
@@ -162,6 +175,7 @@ for sid, sinfo in sorted(stories.items()):
     matrix_stories.append({
         "id": sid, "title": sinfo["title"], "epic_id": sinfo["epic_id"],
         "epic_title": sinfo["epic_title"], "bcp": sinfo["bcp"], "wsjf": sinfo["wsjf"],
+        "spec_path": sinfo.get("spec_path", ""),
         "status": sid_status, "links": links, "link_count": len(links)
     })
     if len(links) == 0 and sid_status != "backlog":

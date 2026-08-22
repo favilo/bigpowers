@@ -1,15 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { specsPath } = require('../../../scripts/lib/project-runtime');
 
 /**
  * readStateYaml(projectRoot)
- * Reads specs/state.yaml and returns an object with mapped fields
+ * Reads state.yaml from the configured artifact root and maps its fields.
  * Returns null if file doesn't exist
  */
 function readStateYaml(projectRoot) {
   try {
-    const filePath = path.join(projectRoot, 'specs', 'state.yaml');
+    const filePath = specsPath(projectRoot, 'state.yaml');
     if (!fs.existsSync(filePath)) {
       return null;
     }
@@ -32,13 +33,13 @@ function readStateYaml(projectRoot) {
 
 /**
  * readExecutionStatus(projectRoot)
- * Reads specs/execution-status.yaml and returns { epics: Map }
+ * Reads execution-status.yaml from the configured artifact root and returns { epics: Map }.
  * Map keys are story/epic IDs, values are status strings
  * Returns null if file doesn't exist
  */
 function readExecutionStatus(projectRoot) {
   try {
-    const filePath = path.join(projectRoot, 'specs', 'execution-status.yaml');
+    const filePath = specsPath(projectRoot, 'execution-status.yaml');
     if (!fs.existsSync(filePath)) {
       return null;
     }
@@ -57,12 +58,12 @@ function readExecutionStatus(projectRoot) {
 
 /**
  * readEpicShards(projectRoot)
- * Reads all files in specs/epics/*.yaml
+ * Reads epic files from the configured artifact root.
  * Returns array of { id, title, stories } objects or null
  */
 function readEpicShards(projectRoot) {
   try {
-    const epicsDir = path.join(projectRoot, 'specs', 'epics');
+    const epicsDir = specsPath(projectRoot, 'epics');
     if (!fs.existsSync(epicsDir)) {
       return null;
     }
@@ -116,12 +117,12 @@ function readEpicShards(projectRoot) {
 
 /**
  * readCycleTimes(projectRoot)
- * Reads specs/metrics/cycle-times.yaml stories array
+ * Reads metrics/cycle-times.yaml from the configured artifact root.
  * Returns array of { id, bcps, start, end, cycleMin, bcpPerHour } or null
  */
 function readCycleTimes(projectRoot) {
   try {
-    const filePath = path.join(projectRoot, 'specs', 'metrics', 'cycle-times.yaml');
+    const filePath = specsPath(projectRoot, 'metrics', 'cycle-times.yaml');
     if (!fs.existsSync(filePath)) {
       return null;
     }

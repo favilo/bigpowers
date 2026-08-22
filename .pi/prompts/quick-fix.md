@@ -3,6 +3,9 @@ name: quick-fix
 description: "Streamlined fast-path for trivial data-only fixes — no TDD, no branching ceremony. Collapses 6 skills into 2 for changes that are purely data with no logic risk. Aborts with fallback to investigate-bug if guardrails trigger."
 ---
 
+# story: e51s04
+
+
 # Quick Fix
 
 > **HARD GATE** — ALL entry criteria must pass before invoking quick-fix. If any guardrail triggers during execution, abort immediately and fall back to `investigate-bug`. Do NOT use quick-fix for logic changes, multi-file edits, or diffs > 5 lines.

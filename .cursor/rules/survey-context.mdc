@@ -21,44 +21,53 @@ Orchestrate-project 6 phases: Phase 1 Discover - Phase 2 Elaborate - Phase 3 Pla
 
 If `CONVENTIONS.md` exists at the project root, read it first. It contains the rules all agents must follow in this project.
 
-### 2. Read specs/ (YAML-first)
+### 2. Resolve and read the project specs directory (YAML-first)
 
-Scan the `specs/` directory if it exists:
+Resolve the project root and specs directory before reading artifacts:
+
+```bash
+BIGPOWERS_ROOT="${BIGPOWERS_ROOT:-$PWD}"
+PROJECT_ROOT="${BIGPOWERS_PROJECT_ROOT:-$PWD}"
+source "$BIGPOWERS_ROOT/scripts/lib/project-runtime.sh"
+SPECS_DIR="$(bp_specs_path "$PROJECT_ROOT" "")"
+```
+
+Use `BIGPOWERS_SPECS_DIR` first, then `.bigpowers/config.yaml` `specs_dir`, then `specs`. Do not infer the project root from the skill or script installation path. Scan `$SPECS_DIR` if it exists:
 
 ```
-specs/
+$SPECS_DIR/
 ├── state.yaml                  → session: active_flow, epic, git, handoff
 ├── release-plan.yaml           → target version, WSJF epic index
 ├── execution-status.yaml       → flat story/epic status
 ├── planning-status.yaml        → discover-phase checklist (optional)
-├── requirements/
-│   ├── VISION_LATEST.yaml
-│   ├── SCOPE_LATEST.yaml
-│   └── GLOSSARY_LATEST.yaml
-├── plans/                      → TECH_STACK, TEST_PLAN, etc.
+├── product/                    → VISION_LATEST, SCOPE_LATEST, GLOSSARY_LATEST
+├── tech-architecture/          → TECH_STACK, TEST_PLAN, etc.
 ├── epics/                      → eNN shards (flat yaml or eNN/stories/)
 └── bugs/                       → BUG-*.md + registry.yaml
 ```
 
 For each YAML file found, note: exists? keys populated? `handoff.next_skill`?
 
-Legacy markdown (`specs/archive/STATE.md`, `RELEASE-PLAN.md`) is **not** SoT if YAML exists.
+Legacy markdown (`$SPECS_DIR/archive/STATE.md`, `RELEASE-PLAN.md`) is **not** SoT if YAML exists.
 
-→ verify: `bash scripts/validate-specs-yaml.sh`
+→ verify: `BIGPOWERS_PROJECT_ROOT="$PROJECT_ROOT" bash "$BIGPOWERS_ROOT/scripts/validate-specs-yaml.sh" "$SPECS_DIR"`
 
 ### 3. Read CLAUDE.md
 
 If `CLAUDE.md` exists at the project root, read it for project context (stack, commands, architecture, conventions).
 
-### 4. Check git state
+### 4. Check VCS state
+
+Read `state.yaml` `vcs.kind` (or resolve `auto`). Use native identity:
 
 ```bash
-git status --short
-git log --oneline -5
-git branch --show-current
+# Git
+git status --short; git log --oneline -5; git branch --show-current
+# Jujutsu
+jj status; jj log -r 'mine() & ::@' -n 5
 ```
 
-Note: is there a feature branch active? Are there uncommitted changes? Do they match `specs/state.yaml` `git` block?
+For Jujutsu, compare stable change IDs and bookmarks with the `vcs` block; never interpret colocated Git's detached HEAD as branch state.
 
 ### 5. Map the lifecycle phase
 
@@ -77,7 +86,7 @@ Based on what you've found, identify which PMBOK phase this project is currently
 | **Integrate** | PR open; tests passing |
 | **Sustain** | Ongoing; no active task |
 
-Prefer `specs/state.yaml` `active_flow` and `handoff.next_skill` when present.
+Prefer `$SPECS_DIR/state.yaml` `active_flow` and `handoff.next_skill` when present.
 
 ### 6. Suggest next skill
 
@@ -113,7 +122,7 @@ Report blockers first, before recommendations.
 
 ### 8. Record story start timestamp
 
-At story start, write `metrics.story_start` with the current ISO 8601 timestamp to `specs/state.yaml` as an **informational progress marker only** — not a measurement input. Cycle-time metrics are now derived from git commit history via `scripts/record-cycle-time.sh` (see `skills/release-branch/REFERENCE.md` §Cycle-time recording).
+At story start, write `metrics.story_start` with the current ISO 8601 timestamp to `$SPECS_DIR/state.yaml` as an **informational progress marker only** — not a measurement input. Cycle-time metrics are now derived from git commit history via `scripts/record-cycle-time.sh` (see `skills/release-branch/REFERENCE.md` §Cycle-time recording).
 
 ## Utility outputs
 
@@ -123,7 +132,7 @@ Loop through all `specs/epics/*/epic.yaml` files and print a summary of story co
 
 ### check-gates (absorbed)
 
-Print the current `active_flow` from `specs/state.yaml`, run `bash scripts/validate-specs-yaml.sh` to verify YAML integrity, and show `git status` to report uncommitted changes and branch state. Use before handoffs or context transitions.
+Print `active_flow`, validate YAML, then show `git status` or `jj status` according to `vcs.kind`. Use before handoffs or context transitions.
 
 ## Handoff
 

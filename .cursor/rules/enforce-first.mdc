@@ -3,6 +3,8 @@ description: "Apply the F.I.R.S.T test quality rubric (per CONVENTIONS.md §Test
 alwaysApply: false
 ---
 
+# story: e80s01
+
 # Enforce FIRST
 > **HARD GATE** — **HARD GATE** — Before shipping, ALL enforcement checks must pass: lint, typecheck, tests, coverage gates. Do NOT disable or skip checks to get to green.
 
@@ -24,7 +26,7 @@ Mechanical self-check (runs before reporting audit complete):
 
 ```bash
 grep -q '## Tests (F.I.R.S.T' CONVENTIONS.md
-grep -qE 'Fast|Independent|Repeatable|Self-Validating|Timely' CONVENTIONS.md
+grep -qE 'F.*ast|I.*ndependent|R.*epeatable|S.*elf-Validating|T.*imely' CONVENTIONS.md
 ```
 
 Each criterion must be explicitly addressed in the audit report with pass/fail per test file reviewed.
