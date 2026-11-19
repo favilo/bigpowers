@@ -42,7 +42,10 @@ for adapter in scripts/adapters/*.sh; do
   # An adapter may read more than one output variable (gemini uses GEMINI_SKILLS
   # and GEMINI_EXT_DIR), so point all of them at the sandbox rather than
   # guessing which one matters.
-  mapfile -t outvars < <(grep -oE '\$\{?[A-Z][A-Z0-9_]*_(SKILLS|RULES|EXT_DIR|OUT|COMMANDS|PROMPTS|HOOKS_DIR)[:-]' "$adapter" \
+  outvars=()
+  while IFS= read -r _ov; do
+    [[ -n "$_ov" ]] && outvars+=("$_ov")
+  done < <(grep -oE '\$\{?[A-Z][A-Z0-9_]*_(SKILLS|RULES|EXT_DIR|OUT|COMMANDS|PROMPTS|HOOKS_DIR)[:-]' "$adapter" \
     | tr -d '${:-' | sort -u)
   if [[ ${#outvars[@]} -eq 0 ]]; then
     echo "  skip: $id — no output directory variable found"

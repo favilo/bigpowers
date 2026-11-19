@@ -141,7 +141,10 @@ if yaml_value_set "$SV"; then
   fi
   APP=$(find_migrations "$SV")
   CNT=$(echo "$APP" | $PYTHON -c "import json,sys; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
-  gap_emit_json "$($PYTHON -c "import json; a=json.loads('''$APP'''); print(json.dumps({'gap':True,'stamp':True,'detected_version':'$SV','detection_method':'stamp','installed_version':'$IV','applicable_migrations':len(a),'migration_ids':[m['id'] for m in a],'confidence':'high','active_work_blocked':False}))")"
+  # Env + single-quoted -c: nested "...$( python -c "{a:1,b:2}")..." brace-expands on macOS bash 3.2.
+  gap_emit_json "$(GAP_APP="$APP" GAP_SV="$SV" GAP_IV="$IV" $PYTHON -c 'import json,os
+a=json.loads(os.environ["GAP_APP"])
+print(json.dumps({"gap":True,"stamp":True,"detected_version":os.environ["GAP_SV"],"detection_method":"stamp","installed_version":os.environ["GAP_IV"],"applicable_migrations":len(a),"migration_ids":[m["id"] for m in a],"confidence":"high","active_work_blocked":False}))')"
   exit 1
 fi
 
@@ -169,7 +172,14 @@ fi
 
 APP=$(find_migrations "$DV")
 CNT=$(echo "$APP" | $PYTHON -c "import json,sys; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
-MJ=$(printf '%s\n' "${MARKERS[@]}" | $PYTHON -c "import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))" 2>/dev/null || echo "[]")
+if ((${#MARKERS[@]})); then
+  MJ=$(printf '%s\n' "${MARKERS[@]}" | $PYTHON -c "import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))" 2>/dev/null || echo "[]")
+else
+  MJ='[]'
+fi
 
-gap_emit_json "$($PYTHON -c "import json; a=json.loads('''$APP'''); m=json.loads('''$MJ'''); print(json.dumps({'gap':True,'stamp':False,'detected_version':'$DV','detection_method':'fingerprint','installed_version':'$IV','applicable_migrations':len(a),'migration_ids':[x['id'] for x in a],'confidence':'$CONF','active_work_blocked':False,'matched_markers':m}))")"
+gap_emit_json "$(GAP_APP="$APP" GAP_MJ="$MJ" GAP_DV="$DV" GAP_IV="$IV" GAP_CONF="$CONF" $PYTHON -c 'import json,os
+a=json.loads(os.environ["GAP_APP"])
+m=json.loads(os.environ["GAP_MJ"])
+print(json.dumps({"gap":True,"stamp":False,"detected_version":os.environ["GAP_DV"],"detection_method":"fingerprint","installed_version":os.environ["GAP_IV"],"applicable_migrations":len(a),"migration_ids":[x["id"] for x in a],"confidence":os.environ["GAP_CONF"],"active_work_blocked":False,"matched_markers":m}))')"
 exit 1

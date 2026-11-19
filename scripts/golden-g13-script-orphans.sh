@@ -30,24 +30,6 @@ NC='\033[0m'
 
 GATES_FILE="scripts/lib/golden-suite-gates.sh"
 
-# Reference locations a script can legitimately be called from. Archived
-# epics are frozen history (per BUG-2026-07-26: an archived reference is not a
-# live caller), so they're excluded even though they match the glob.
-REF_GLOBS=(
-  "scripts/**/*.sh"
-  "skills/**/SKILL.md"
-  "skills/**/REFERENCE.md"
-  "CLAUDE.md"
-  "CONVENTIONS.md"
-  "docs/**/*.md"
-  "bin/**/*.js"
-  "package.json"
-  ".releaserc.json"
-  ".github/workflows/*.yml"
-  "specs/epics/**/*.yaml"
-  "specs/epics/**/*.md"
-)
-
 is_manual_utility() { # $1 = script path
   head -10 "$1" 2>/dev/null | grep -q '^# bp-manual-utility:'
 }
@@ -62,32 +44,61 @@ is_referenced() { # $1 = script basename, $2... = candidate file globs already e
   return 1
 }
 
+# Expand REF_GLOBS without bash-4 globstar (macOS ships bash 3.2).
 collect_ref_files() {
-  shopt -s globstar nullglob
-  local pattern expanded=()
-  for pattern in "${REF_GLOBS[@]}"; do
-    for f in $pattern; do
-      [[ "$f" == specs/epics/archive/* ]] && continue
-      expanded+=("$f")
-    done
-  done
-  shopt -u globstar nullglob
-  printf '%s\n' "${expanded[@]}"
+  {
+    find scripts -type f -name '*.sh' 2>/dev/null
+    find skills -type f \( -name 'SKILL.md' -o -name 'REFERENCE.md' \) 2>/dev/null
+    [[ -f CLAUDE.md ]] && printf '%s\n' CLAUDE.md
+    [[ -f CONVENTIONS.md ]] && printf '%s\n' CONVENTIONS.md
+    find docs -type f -name '*.md' 2>/dev/null
+    find bin -type f -name '*.js' 2>/dev/null
+    [[ -f package.json ]] && printf '%s\n' package.json
+    [[ -f .releaserc.json ]] && printf '%s\n' .releaserc.json
+    find .github/workflows -type f -name '*.yml' 2>/dev/null
+    find specs/epics -type f \( -name '*.yaml' -o -name '*.md' \) 2>/dev/null \
+      | grep -v '/archive/' || true
+  } | sort -u
+}
+
+build_ref_haystack() {
+  local out="$1" f
+  : > "$out"
+  while IFS= read -r f; do
+    [[ -n "$f" ]] || continue
+    printf '@@@@FILE %s\n' "$f" >> "$out"
+    cat "$f" >> "$out" 2>/dev/null || true
+  done < <(collect_ref_files)
+}
+
+haystack_references() { # $1 = basename, $2 = self path (or empty), $3 = haystack
+  local name="$1" self="$2" haystack="$3"
+  awk -v name="$name" -v self="$self" '
+    $0 ~ /^@@@@FILE / {
+      skip = (self != "" && $0 == ("@@@@FILE " self))
+      next
+    }
+    skip { next }
+    index($0, name) { found = 1; exit }
+    END { exit !found }
+  ' "$haystack"
 }
 
 find_orphans() { # $1 = scripts root dir, $2 = extra untagged basename to inject (self-test only)
   local root="$1" extra="${2:-}"
-  local orphans="" f b
-  mapfile -t ref_files < <(collect_ref_files)
+  local orphans="" f b haystack
+  haystack=$(mktemp)
+  build_ref_haystack "$haystack"
   for f in "$root"/*.sh; do
     [[ -e "$f" ]] || continue
     b="$(basename "$f")"
     is_manual_utility "$f" && continue
-    is_referenced "$b" "${ref_files[@]}" || orphans+="  $b"$'\n'
+    haystack_references "$b" "$f" "$haystack" || orphans+="  $b"$'\n'
   done
   if [[ -n "$extra" ]]; then
-    is_referenced "$extra" "${ref_files[@]}" || orphans+="  $extra"$'\n'
+    haystack_references "$extra" "" "$haystack" || orphans+="  $extra"$'\n'
   fi
+  rm -f "$haystack"
   printf '%s' "$orphans"
 }
 
@@ -98,8 +109,8 @@ if [[ "${1:-}" == "--self-test" ]]; then
 
   # (a) An unlisted, untagged script must still be reported. Built by
   # concatenation, not a literal string: this script's own source lives under
-  # scripts/, which REF_GLOBS also scans, so a literal fixture name written
-  # here would make the checker match its own self-test line.
+  # scripts/, which collect_ref_files also scans, so a literal fixture name
+  # written here would make the checker match its own self-test line.
   fake_name="fixture-not-wired-$$.sh"
   ok=1
   if [[ -z "$(find_orphans "scripts" "$fake_name")" ]]; then
