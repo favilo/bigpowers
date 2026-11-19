@@ -8,6 +8,7 @@
 
 set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
 resolve_repo_root
 cd "$REPO_ROOT"
 
@@ -80,7 +81,7 @@ TOMBSTONES_FILE="specs/tombstones.yaml"
 [[ -f "$TOMBSTONES_FILE" ]] || echo "tombstones: []" > "$TOMBSTONES_FILE"
 
 # Values flow through the environment, never interpolated into the python
-# source string — string-interpolating shell variables into `python3 -c`
+# source string — string-interpolating shell variables into `$PYTHON -c`
 # turns any unvalidated field (e.g. CURRENT_VERSION, sourced from
 # package.json) into a code-injection vector.
 TOMBSTONE_FILE="$TOMBSTONES_FILE" \
@@ -88,7 +89,7 @@ TOMBSTONE_OLD_NAME="$OLD_NAME" \
 TOMBSTONE_NEW_NAME="$NEW_NAME" \
 TOMBSTONE_CREATED_AT="$CREATED_AT" \
 TOMBSTONE_VERSION="$CURRENT_VERSION" \
-python3 -c "
+"$PYTHON" -c "
 import os
 import yaml
 path = os.environ['TOMBSTONE_FILE']

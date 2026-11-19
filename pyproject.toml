@@ -1,0 +1,15 @@
+# story: BUG-2026-07-04-python-interpreter-fragility
+# Repository-local Python environment for Bigpowers scripts.
+# Setup from repo root: uv sync --locked
+
+[project]
+name = "bigpowers"
+version = "2.87.0"
+description = "Agent skills for spec-driven, test-first software development"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml==6.0.2",
+]
+
+[tool.uv]
+package = false

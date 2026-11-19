@@ -6,6 +6,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# shellcheck source=lib/python-env.sh
+source "$SCRIPT_DIR/lib/python-env.sh"
 cd "$REPO_ROOT"
 
 SKILLS_ROOT="$REPO_ROOT/skills"
@@ -105,7 +107,7 @@ if $ARCHIVE_MODE; then
   if [[ ! -f "$STATE" ]]; then
     echo "  (no specs/state.yaml — skip usage scan)"
   else
-    python3 - "$STATE" "$SKILLS_ROOT" <<'PY'
+    "$PYTHON" - "$STATE" "$SKILLS_ROOT" <<'PY'
 import sys, glob, os
 from pathlib import Path
 

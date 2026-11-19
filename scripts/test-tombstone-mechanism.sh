@@ -7,6 +7,7 @@
 
 set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
 resolve_repo_root
 cd "$REPO_ROOT"
 
@@ -89,7 +90,7 @@ else
 fi
 
 # --- Scenario: expired tombstone flagged (6b) ---
-python3 -c "
+"$PYTHON" -c "
 import yaml
 d = yaml.safe_load(open('$TOMBSTONES_FILE')) or {'tombstones': []}
 for t in d['tombstones']:
@@ -123,7 +124,7 @@ else
 fi
 
 # --- Scenario: validate-tombstones.sh rejects an invalid name read back from the ledger ---
-python3 -c "
+"$PYTHON" -c "
 import yaml
 d = yaml.safe_load(open('$TOMBSTONES_FILE')) or {'tombstones': []}
 d.setdefault('tombstones', []).append({
@@ -139,7 +140,7 @@ if echo "$output" | grep -qi "FAIL.*not a valid skill name"; then
 else
   ta_fail "validate-tombstones.sh did not reject a path-traversal name read from the ledger"
 fi
-python3 -c "
+"$PYTHON" -c "
 import yaml
 d = yaml.safe_load(open('$TOMBSTONES_FILE')) or {'tombstones': []}
 d['tombstones'] = [t for t in d.get('tombstones', []) if t.get('old_name') != '../../etc/passwd']

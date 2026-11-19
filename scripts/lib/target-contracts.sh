@@ -97,10 +97,16 @@ assert_hooks_manifest() {
     echo "FAIL $id:$contract — $manifest missing"
     return 1
   fi
-  # verify-install.sh sources this file without lib/python-env.sh, so resolve an
-  # interpreter locally rather than relying on $PYTHON being set.
+  # verify-install.sh sources this file without lib/python-env.sh, so resolve the
+  # repo-local uv interpreter rather than relying on $PYTHON being set.
   local py="${PYTHON:-}"
-  [[ -n "$py" ]] || py="$(command -v python3 || command -v python || true)"
+  if [[ -z "$py" ]]; then
+    local _tc_root
+    _tc_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+    if [[ -x "$_tc_root/.venv/bin/python" ]]; then
+      py="$_tc_root/.venv/bin/python"
+    fi
+  fi
   if [[ -n "$py" ]] && ! "$py" -c "import json; json.load(open('$manifest'))" 2>/dev/null; then
     echo "FAIL $id:$contract — $manifest is not valid JSON"
     return 1

@@ -7,6 +7,7 @@
 
 set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib/skill-common.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/lib/python-env.sh"
 resolve_repo_root
 cd "$REPO_ROOT"
 
@@ -33,7 +34,7 @@ CURRENT_VERSION=$(jq -r '.version' package.json 2>/dev/null)
 # migration window CONVENTIONS.md promises.
 release_train() { echo "$1" | cut -d. -f1-2; }
 
-ROWS=$(python3 -c "
+ROWS=$("$PYTHON" -c "
 import yaml
 d = yaml.safe_load(open('$TOMBSTONES_FILE')) or {'tombstones': []}
 for t in d.get('tombstones', []) or []:

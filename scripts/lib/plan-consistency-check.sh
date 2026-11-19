@@ -16,8 +16,6 @@ REPO_ROOT="$(cd "$SCRIPT_LIB_DIR/../.." && pwd)"
 source "$SCRIPT_LIB_DIR/fail-open-detect.sh"
 # shellcheck source=python-env.sh
 source "$SCRIPT_LIB_DIR/python-env.sh"
-resolve_python >/dev/null 2>&1 || true
-PYTHON_BIN="${PYTHON:-python3}"
 
 EPIC_YAML="$CAPSULE/epic.yaml"
 CRITICAL=0
@@ -93,7 +91,7 @@ for tasks in "${TASKS[@]+"${TASKS[@]}"}"; do
   else
     # Consume the full producer stream: an early awk exit can SIGPIPE Python and,
     # under pipefail, abort this gate before it reports findings.
-    verify_cmd="$("$PYTHON_BIN" "$SCRIPT_LIB_DIR/extract-story-verify.py" "$REPO_ROOT" 2>/dev/null \
+    verify_cmd="$("$PYTHON" "$SCRIPT_LIB_DIR/extract-story-verify.py" "$REPO_ROOT" 2>/dev/null \
       | awk -F'\t' -v s="$sid" '$1 == s && !found { print $4; found = 1 }')"
     if [[ -n "$verify_cmd" ]]; then
       is_executable_verify "$verify_cmd" \

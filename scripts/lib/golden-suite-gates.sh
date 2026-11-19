@@ -59,6 +59,8 @@ GOLDEN_GATES=(
   "trace-strict:bash scripts/test-trace-strict.sh:false"
   "trace-matrix-size:bash scripts/test-trace-matrix-size.sh:false"
   "setup-no-pyyaml:bash scripts/test-setup-no-pyyaml.sh:false"
+  "python-env-uv:bash scripts/test-python-env-uv.sh:false"
+  "plan-consistency-uv:bash scripts/test-plan-consistency-uv.sh:false"
   "install-distribute-only:bash scripts/test-install-distribute-only.sh:false"
   "completeness-critic-scope:bash scripts/test-completeness-critic-scope.sh:false"
   "epics-wiki-zero-stories:bash scripts/test-generate-epics-wiki-zero-stories.sh:false"
