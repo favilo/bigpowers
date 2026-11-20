@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # story: BUG-2026-07-04-python-interpreter-fragility
-# test-python-env-uv.sh — repo-local uv .venv must be the only Python resolver.
+# test-python-env.sh — repo-local uv .venv must be the only Python resolver.
 #
 # Asserts:
 #   1. Missing uv → exit 2 with clear error.
@@ -8,7 +8,7 @@
 #   3. With a synced .venv, PATH python without PyYAML still resolves to
 #      .venv/bin/python and `import yaml` succeeds (no host fallback warning).
 #
-# Usage: bash scripts/test-python-env-uv.sh
+# Usage: bash scripts/test-python-env.sh
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -24,12 +24,12 @@ TA_TMPDIR="$(mktemp -d)"
 
 # PyYAML-free host interpreter first on PATH (stock macOS / CI image shape).
 if ! python3 -m venv "$TA_TMPDIR/host-python" >/dev/null 2>&1; then
-  echo "test-python-env-uv: SKIP — cannot create host venv"
+  echo "test-python-env: SKIP — cannot create host venv"
   exit 0
 fi
 HOST_PY="$TA_TMPDIR/host-python/bin/python"
 if "$HOST_PY" -c "import yaml" >/dev/null 2>&1; then
-  echo "test-python-env-uv: SKIP — fresh venv unexpectedly has PyYAML"
+  echo "test-python-env: SKIP — fresh venv unexpectedly has PyYAML"
   exit 0
 fi
 export PATH="$TA_TMPDIR/host-python/bin:$PATH"
@@ -101,5 +101,5 @@ else
   fi
 fi
 
-echo "test-python-env-uv: $TA_PASS passed, $TA_FAIL failed"
+echo "test-python-env: $TA_PASS passed, $TA_FAIL failed"
 [[ "$TA_FAIL" -eq 0 ]] || exit 1

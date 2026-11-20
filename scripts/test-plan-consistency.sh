@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # story: BUG-2026-07-04-python-interpreter-fragility
-# test-plan-consistency-uv.sh — plan-consistency-check uses repo-local uv .venv
+# test-plan-consistency.sh — plan-consistency-check uses repo-local uv .venv
 # even when PATH python3 lacks PyYAML.
 #
-# Usage: bash scripts/test-plan-consistency-uv.sh
+# Usage: bash scripts/test-plan-consistency.sh
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -18,22 +18,22 @@ trap ta_cleanup EXIT
 TA_TMPDIR="$(mktemp -d)"
 
 if ! command -v uv >/dev/null 2>&1; then
-  echo "test-plan-consistency-uv: SKIP — uv not installed"
+  echo "test-plan-consistency: SKIP — uv not installed"
   exit 0
 fi
 if [[ ! -f "$REPO_ROOT/pyproject.toml" || ! -f "$REPO_ROOT/uv.lock" ]]; then
-  echo "test-plan-consistency-uv: FAIL — pyproject.toml + uv.lock required"
+  echo "test-plan-consistency: FAIL — pyproject.toml + uv.lock required"
   exit 1
 fi
 
 # PyYAML-free host interpreter first on PATH.
 if ! python3 -m venv "$TA_TMPDIR/host-python" >/dev/null 2>&1; then
-  echo "test-plan-consistency-uv: SKIP — cannot create host venv"
+  echo "test-plan-consistency: SKIP — cannot create host venv"
   exit 0
 fi
 HOST_PY="$TA_TMPDIR/host-python/bin/python"
 if "$HOST_PY" -c "import yaml" >/dev/null 2>&1; then
-  echo "test-plan-consistency-uv: SKIP — fresh venv unexpectedly has PyYAML"
+  echo "test-plan-consistency: SKIP — fresh venv unexpectedly has PyYAML"
   exit 0
 fi
 export PATH="$TA_TMPDIR/host-python/bin:$PATH"
@@ -113,5 +113,5 @@ do
   fi
 done
 
-echo "test-plan-consistency-uv: $TA_PASS passed, $TA_FAIL failed"
+echo "test-plan-consistency: $TA_PASS passed, $TA_FAIL failed"
 [[ "$TA_FAIL" -eq 0 ]] || exit 1
