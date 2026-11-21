@@ -52,8 +52,15 @@ else
 fi
 
 # 3. Fallback fidelity: simple_yaml must equal PyYAML for every skill's
-#    frontmatter. Runs under python3 (CI has PyYAML); skips if PyYAML absent.
-if python3 - <<'PY'; then
+#    frontmatter. Uses the repo-local uv interpreter; skips if PyYAML absent.
+REPO_PY="${REPO_ROOT}/.venv/bin/python"
+if [[ ! -x "$REPO_PY" ]]; then
+  echo "test-setup-no-pyyaml: SKIP — .venv missing (run: uv sync --locked)"
+  echo "test-setup-no-pyyaml: $TA_PASS passed, $TA_FAIL failed"
+  [[ "$TA_FAIL" -eq 0 ]] || exit 1
+  exit 0
+fi
+if "$REPO_PY" - <<'PY'; then
 import glob, sys
 sys.path.insert(0, "scripts/lib")
 from simple_yaml import parse_simple_yaml

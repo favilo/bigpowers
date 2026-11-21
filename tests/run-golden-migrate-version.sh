@@ -5,6 +5,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# shellcheck source=../scripts/lib/python-env.sh
+source "$REPO_ROOT/scripts/lib/python-env.sh"
 FIXTURES="$SCRIPT_DIR/fixtures"
 CHECK_GAP="$REPO_ROOT/scripts/check-spec-version-gap.sh"
 VALIDATE_YAML="$REPO_ROOT/scripts/validate-specs-yaml.sh"
@@ -49,7 +51,7 @@ echo ""
 
 # Verify state.yaml exists but no bigpowers_version stamp
 if [ -f "$tmp2/specs/state.yaml" ]; then
-  stamped="$(python3 -c "import yaml; d=yaml.safe_load(open('$tmp2/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
+  stamped="$("$PYTHON" -c "import yaml; d=yaml.safe_load(open('$tmp2/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
   if [ "$stamped" = "MISSING" ]; then
     pass "v2.0.0: YAML cockpit without bigpowers_version stamp"
   else
@@ -72,8 +74,8 @@ bash "$CHECK_GAP" --skip-block --json 2>&1 || true
 echo ""
 
 if [ -f "$tmp3/specs/state.yaml" ]; then
-  has_capsule="$(python3 -c "import yaml; d=yaml.safe_load(open('$tmp3/specs/state.yaml')); print('yes' if d.get('epic_cycle') else 'no')" 2>/dev/null)" || has_capsule="ERR"
-  stamped="$(python3 -c "import yaml; d=yaml.safe_load(open('$tmp3/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
+  has_capsule="$("$PYTHON" -c "import yaml; d=yaml.safe_load(open('$tmp3/specs/state.yaml')); print('yes' if d.get('epic_cycle') else 'no')" 2>/dev/null)" || has_capsule="ERR"
+  stamped="$("$PYTHON" -c "import yaml; d=yaml.safe_load(open('$tmp3/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
   if [ "$has_capsule" = "yes" ] && [ "$stamped" = "MISSING" ]; then
     pass "v2.20: capsule era with epic_cycle, no stamp"
   elif [ "$has_capsule" != "yes" ]; then
@@ -97,7 +99,7 @@ git init --quiet && git config user.email "test@b.dev" && git config user.name "
 bash "$REPO_ROOT/scripts/migrate-version.sh" --project "$tmp4" --force --no-commit 2>&1 | tail -3 || true
 
 if [ -f "$tmp4/specs/state.yaml" ]; then
-  stamped="$(python3 -c "import yaml; d=yaml.safe_load(open('$tmp4/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
+  stamped="$("$PYTHON" -c "import yaml; d=yaml.safe_load(open('$tmp4/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
   installed="$(node -e "console.log(require('$REPO_ROOT/package.json').version)" 2>/dev/null)"
   if [ "$stamped" = "$installed" ]; then
     pass "v2.20: stamp-only migration produced bigpowers_version=$stamped"
@@ -128,7 +130,7 @@ bash "$REPO_ROOT/scripts/migrate-version.sh" --project "$tmp5" --force --no-comm
 
 if [ -f "$tmp5/specs/state.yaml" ]; then
   installed="$(node -e "console.log(require('$REPO_ROOT/package.json').version)" 2>/dev/null)"
-  stamped="$(python3 -c "import yaml; d=yaml.safe_load(open('$tmp5/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
+  stamped="$("$PYTHON" -c "import yaml; d=yaml.safe_load(open('$tmp5/specs/state.yaml')); print(d.get('bigpowers_version','MISSING'))" 2>/dev/null)" || stamped="ERR"
   if [ "$stamped" = "$installed" ]; then
     pass "v2.0.0: stamp = $stamped after migration"
   else
@@ -138,7 +140,7 @@ else
   fail "v2.0.0: state.yaml missing after migration"
 fi
 
-if python3 -c "import yaml; yaml.safe_load(open('$tmp5/specs/state.yaml')); print('OK')" 2>/dev/null | grep -q OK; then
+if "$PYTHON" -c "import yaml; yaml.safe_load(open('$tmp5/specs/state.yaml')); print('OK')" 2>/dev/null | grep -q OK; then
   pass "v2.0.0: state.yaml is valid YAML after migration"
 else
   fail "v2.0.0: state.yaml parse error after migration"

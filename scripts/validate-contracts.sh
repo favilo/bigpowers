@@ -6,6 +6,8 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# shellcheck source=lib/python-env.sh
+source "$REPO_ROOT/scripts/lib/python-env.sh"
 cd "$REPO_ROOT"
 
 self_test() {
@@ -43,8 +45,8 @@ if grep -q '^sources:' "$CONTRACT"; then
   REF=$(grep 'reference:' "$CONTRACT" | head -1 | awk '{print $2}')
   TGT=$(grep 'target:' "$CONTRACT" | head -1 | awk '{print $2}')
   [[ -f "$REF" && -f "$TGT" ]] || { echo "FAIL: missing source files"; exit 1; }
-  REF_KEYS=$(python3 -c "import json; print('\n'.join(sorted(json.load(open('$REF')).keys())))")
-  TGT_KEYS=$(python3 -c "import json; print('\n'.join(sorted(json.load(open('$TGT')).keys())))")
+  REF_KEYS=$("$PYTHON" -c "import json; print('\n'.join(sorted(json.load(open('$REF')).keys())))")
+  TGT_KEYS=$("$PYTHON" -c "import json; print('\n'.join(sorted(json.load(open('$TGT')).keys())))")
   MISSING=$(comm -23 <(echo "$REF_KEYS") <(echo "$TGT_KEYS") | wc -l | tr -d ' ')
   if [[ "$MISSING" -gt 0 ]]; then
     echo "FAIL: key-set — $MISSING keys in reference missing from target"

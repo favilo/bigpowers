@@ -1,21 +1,18 @@
-active_flow: build_epic
-active_epic: e81
-active_story: e81s03
-bug_id: null
+active_flow: develop_tdd
+active_epic: null
+active_story: null
+bug_id: BUG-2026-07-04-python-interpreter-fragility
 bigpowers_version: 2.87.0
 bug_cycle: null
 handoff:
-  next_skill: release-branch
+  next_skill: verify-work
   context: >-
-    e81s03 verify-work and audit-code PASS. UAT is user-confirmed; full Preflight is
-    green at 37/37; all seven VCS scenarios, security, blind-spot, completeness, NFR,
-    and wiki gates pass. Audit evidence is in
-    specs/verifications/AUDIT-e81-e81s03.md. Current Jujutsu working-copy changes are
-    verification/generated finalization and removal of the sole real orphan wiki page.
-    Proposed message: chore(verification): finalize e81s03 lifecycle evidence. Preserve
-    all current generated/report changes. Continue with release-branch using native
-    Jujutsu state. bts is unavailable despite CLAUDE.md claiming it is installed.
-  epic: e81
+    feat/uv-python-environment: uv .venv plan landed (poloryrm). Follow-up fixes for
+    gates exposed once PyYAML resolves: check-spec-version-gap brace-expansion,
+    project-survey empty-array under bash 3.2, migrate-version golden uses $PYTHON,
+    G-13/adapter-render mapfile+globstar ported. Next: full Preflight then
+    release-branch. Setup: uv sync --locked.
+  epic: null
 epic_cycle:
   current_step: release-branch
   completed_steps:
@@ -58,6 +55,10 @@ metrics:
       calls: 1
       total_seconds: 912.0
       avg_seconds: 912.0
+    configurable-root-test:
+      calls: 1
+      total_seconds: 1.0
+      avg_seconds: 1.0
 release:
   ci_verified: true
   last_commit: 8efdce74

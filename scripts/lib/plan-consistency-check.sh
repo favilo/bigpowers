@@ -16,8 +16,6 @@ REPO_ROOT="$(cd "$SCRIPT_LIB_DIR/../.." && pwd)"
 source "$SCRIPT_LIB_DIR/fail-open-detect.sh"
 # shellcheck source=python-env.sh
 source "$SCRIPT_LIB_DIR/python-env.sh"
-resolve_python >/dev/null 2>&1 || true
-PYTHON_BIN="${PYTHON:-python3}"
 
 EPIC_YAML="$CAPSULE/epic.yaml"
 CRITICAL=0
@@ -69,7 +67,9 @@ for tasks in "${TASKS[@]+"${TASKS[@]}"}"; do
   sid="$(echo "$base" | grep -oE 'e[0-9]+s[0-9]+' | head -1)"
   [[ -n "$sid" ]] || continue
 
-  spec_name="$(grep -E '^spec:' "$tasks" | head -1 | sed -E 's/^spec:[[:space:]]*//; s/^"(.*)"$/\1/')"
+  # grep exits 1 when spec: is absent. Under set -e + pipefail that aborts
+  # the gate before report() runs, so the miss must not fail the assignment.
+  spec_name="$(grep -E '^spec:' "$tasks" | head -1 | sed -E 's/^spec:[[:space:]]*//; s/^"(.*)"$/\1/' || true)"
   spec="$CAPSULE/$spec_name"
   if [[ -z "$spec_name" || ! -f "$spec" ]]; then
     report CRITICAL "Story $sid tasks.yaml declares no valid spec: file"
@@ -93,7 +93,7 @@ for tasks in "${TASKS[@]+"${TASKS[@]}"}"; do
   else
     # Consume the full producer stream: an early awk exit can SIGPIPE Python and,
     # under pipefail, abort this gate before it reports findings.
-    verify_cmd="$("$PYTHON_BIN" "$SCRIPT_LIB_DIR/extract-story-verify.py" "$REPO_ROOT" 2>/dev/null \
+    verify_cmd="$("$PYTHON" "$SCRIPT_LIB_DIR/extract-story-verify.py" "$REPO_ROOT" 2>/dev/null \
       | awk -F'\t' -v s="$sid" '$1 == s && !found { print $4; found = 1 }')"
     if [[ -n "$verify_cmd" ]]; then
       is_executable_verify "$verify_cmd" \

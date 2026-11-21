@@ -66,9 +66,11 @@ REFACTOR (optional): clean up → commit: refactor(<scope>): ...
 
 ```bash
 bash scripts/verify-tdd-red-commit.sh
+# another project, Jujutsu or Git. Do not cd into Bigpowers.
+TDD_VERIFY_CMD='npm test' "$BIGPOWERS_ROOT/scripts/verify-tdd-red-commit.sh" --rev <red-change>
 ```
 
-Show `git log -2 --oneline` **and** the script output as evidence. If the test-only commit passes in isolation, the RED gate is violated — stop and fix before GREEN.
+Default revision is the parent of the working copy (`@-` in Jujutsu, `HEAD~1` in Git). Pass `--rev` to select the test-only change. Jujutsu repos are checked with `jj` only. Show `jj log -r @-` (or `git log -2 --oneline`) **and** the script output as evidence. If the test-only commit passes in isolation, the RED gate is violated — stop and fix before GREEN.
 
 > **tasks.yaml ledger (e45s06)** — After each task's `verify:` exits 0, update `eNNsYY-tasks.yaml`: set that task's `status: passing`. Story-level `status: passing` only when all tasks pass.
 

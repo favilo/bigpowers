@@ -83,7 +83,7 @@
     },
     "develop-tdd": {
       "description": "Test-driven development with red-green-refactor loop using vertical slices. Use for features (epic tasks) or bugs (specs/bugs/BUG-*.md).",
-      "sha256": "fa3f3d2d0b9f5694",
+      "sha256": "6b11d5a2a4ad0deb",
       "path": "skills/develop-tddSKILL.md"
     },
     "diagnose-root": {

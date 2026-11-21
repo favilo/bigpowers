@@ -26,7 +26,8 @@ if [[ "$has_specs" == "true" ]]; then
     "$SPECS_DIR"/*.md
   )
   shopt -u nullglob
-  specs_files=$(for spec_path in "${spec_paths[@]}"; do
+  # bash 3.2 + set -u: empty array expansion is unbound without the + guard
+  specs_files=$(for spec_path in ${spec_paths[@]+"${spec_paths[@]}"}; do
     basename "$spec_path"
   done | sort -u | tr '\n' ',' | sed 's/,$//')
 fi

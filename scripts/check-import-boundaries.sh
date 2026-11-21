@@ -5,6 +5,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# shellcheck source=lib/python-env.sh
+source "$SCRIPT_DIR/lib/python-env.sh"
 BOUNDARIES="$REPO_ROOT/specs/import-boundaries.json"
 
 if [[ ! -f "$BOUNDARIES" ]]; then
@@ -12,7 +14,7 @@ if [[ ! -f "$BOUNDARIES" ]]; then
   exit 1
 fi
 
-python3 - "$REPO_ROOT" "$BOUNDARIES" <<'PY'
+"$PYTHON" - "$REPO_ROOT" "$BOUNDARIES" <<'PY'
 import json, re, sys
 from pathlib import Path
 
